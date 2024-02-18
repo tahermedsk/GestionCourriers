@@ -1,0 +1,8 @@
+.navbar {
+  margin-left: 25%;
+}
+.vertical-line{
+  border-right: 1px solid white;
+  height: 40px;
+  margin: 0 5px;
+}
