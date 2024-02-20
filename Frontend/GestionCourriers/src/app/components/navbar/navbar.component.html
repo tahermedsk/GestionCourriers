@@ -1,50 +1,50 @@
- <nav>
+<nav>
   <div class="container text-center">
     <div class="row">
         <div>
-          <div class="fw-bold">الجمهورية الإسلامية الموريتانية</div>
-          <div class="text-center">شرف-إخاء-عدل</div>
+          <div class="fw-bold fs-4">الجمهورية الإسلامية الموريتانية</div>
+          <div class="text-center fs-5">شرف-إخاء-عدل</div>
         </div>
 
+        <div class="col"><img class="rounded mx-auto d-block float-left" src="assets/mauritanie.png" height="200" width="200"></div>
+
        <div><hr></div>
-        <div class="col"><img class="rounded mx-auto d-block" src="assets/mauritanie.png" height="200" width="200"></div>
-        <div class="row">
-          <div>
+    </div>
+    <div class="row">
+          <div class="fs-5">
             République Islamique de Mauritanie <br>
-            <span class="text-center" >Honneur - Fraternité - Justice</span>
+            <span>Honneur - Fraternité - Justice</span>
           </div><br><br><br>
-          <div>
+          <div class="fs-5">
             وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة
             <br>
             <span>Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration</span>
           </div>
-        </div>
-    </div>
+      </div>
   </div>
 <br><br><br>
 
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded position-absolute d-flex justify-content-center">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Accueil</a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded d-flex justify-content-center">
+  <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav">
-          <div class="vertical-line"></div>
-          <button class="nav-link btn" href="#">Courrier arrivée</button>
-          <div class="vertical-line"></div>
-          <button class="nav-link btn" href="#">Courrier départ</button>
-          <div class="vertical-line"></div>
-          <button class="nav-link btn" href="#">Statistiques</button>
-          <div class="vertical-line"></div>
-          <button *ngIf="isLoginPage()" class="nav-link btn active" href="#">Login</button>
-          <button *ngIf="!isLoginPage()" class="nav-link btn" href="#">Se déconnecter</button>
-        </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div class="navbar-nav">
+              <div class="vertical-line"></div>
+              <button class="nav-link btn fs-4" href="#">Accueil</button>
+              <div class="vertical-line mx-4"></div> <!-- Adjust the mx-3 for more or less space -->
+              <button class="nav-link btn fs-4" href="#">Courrier arrivée</button>
+              <div class="vertical-line mx-4"></div>
+              <button class="nav-link btn fs-4" href="#">Courrier départ</button>
+              <div class="vertical-line mx-4"></div>
+              <button class="nav-link btn fs-4" href="#">Statistiques</button>
+              <div class="vertical-line mx-4"></div>
+              <button *ngIf="isLoginPage()" class="nav-link btn active fs-4" href="#">Login</button>
+              <div class="vertical-line mx-3"></div>
+              <button *ngIf="!isLoginPage()" class="nav-link btn fs-4" href="#">Se déconnecter</button>
+          </div>
       </div>
-    </div>
-  </nav>
-<br><br><br><br>
-  <br>
- </nav>
+  </div>
+</nav>
