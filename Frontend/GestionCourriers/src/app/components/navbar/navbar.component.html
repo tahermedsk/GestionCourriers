@@ -33,17 +33,17 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <div class="navbar-nav">
               <div class="vertical-line"></div>
-              <button class="nav-link btn fs-4" href="#">Accueil</button>
+              <button class="nav-link btn fs-4" [routerLink]="['/login']" routerLinkActive="router-link-active" >Accueil</button>
               <div class="vertical-line mx-4"></div> <!-- Adjust the mx-3 for more or less space -->
-              <button class="nav-link btn fs-4" href="#">Courrier arrivée</button>
+              <button class="nav-link btn fs-4" [routerLink]="['/dest']" routerLinkActive="router-link-active" >Courrier arrivée</button>
               <div class="vertical-line mx-4"></div>
-              <button class="nav-link btn fs-4" href="#">Courrier départ</button>
+              <button class="nav-link btn fs-4" [routerLink]="['/send']" routerLinkActive="router-link-active" >Courrier départ</button>
               <div class="vertical-line mx-4"></div>
               <button class="nav-link btn fs-4" href="#">Statistiques</button>
               <div class="vertical-line mx-4"></div>
               <button *ngIf="isLoginPage()" class="nav-link btn active fs-4" href="#">Login</button>
               <div class="vertical-line mx-3"></div>
-              <button *ngIf="!isLoginPage()" class="nav-link btn fs-4" href="#">Se déconnecter</button>
+              <button *ngIf="!isLoginPage()" class="nav-link btn fs-4" [routerLink]="['/login']" routerLinkActive="router-link-active" >Se déconnecter</button>
           </div>
       </div>
   </div>

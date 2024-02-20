@@ -11,33 +11,41 @@
   </head>
   <body>
     <div class="container">
-      <h1>COURRIER ARRIVEE</h1>
-      <h4>Enregistrement</h4>
-      <hr />
-      <form class="row g-3">
-        <div class="col-md-3">
-          <label for="numero" class="form-label">N°</label>
-          <input
-            type="text"
-            class="form-control"
-            id="numero"
-            placeholder="Numéro"
-          />
+        <br>
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <h1>COURRIER ARRIVEE</h1>
+                <h4>Enregistrement</h4>
+            </div>
         </div>
-        <div class="col-md-3">
-          <label for="date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="date" />
-        </div>
-        <div class="col-md-6">
-          <label for="etape_actuelle" class="form-label">Etape Actuelle</label>
-          <select class="form-select" id="etape_actuelle">
-            <option value="">choisir une etape</option>
-            <option value="etape1">etape1</option>
-            <option value="etape2">etape2</option>
-            <option value="autre">etape3</option>
-          </select>
-        </div>
-
+        <hr />
+        <form class="row g-3 align-items-end">
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Nouveau</button>
+            </div>
+            <div class="col-md-3">
+                <label for="numero" class="form-label">N°</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="numero"
+                    placeholder="Numéro"
+                />
+            </div>
+            <div class="col-md-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" />
+            </div>
+            <div class="col-md-4">
+                <label for="etape_actuelle" class="form-label">Etape Actuelle</label>
+                <select class="form-select" id="etape_actuelle">
+                    <option value="">choisir une etape</option>
+                    <option value="etape1">Réception et enregistrement</option>
+                    <option value="etape2">Lecture et ventilation</option>
+                    <option value="etape3">Réponse</option>
+                    <option value="etape3">Archivage</option>
+                </select>
+            </div>
         <!-- Boutons de sélection d'étape -->
         <div class="col-md-12 mt-3">
           <h4 class="mb-3">Sélectionnez une étape:</h4>
@@ -59,103 +67,17 @@
           </div>
         </div>
 
-        <div class="col-md-3">
-          <label for="code" class="form-label">Code</label>
-          <input
-            type="text"
-            class="form-control"
-            id="code"
-            placeholder="Code du document"
-          />
-        </div>
-        <div class="col-md-3">
-          <label for="expediteur" class="form-label">Expéditeur</label>
-          <input
-            type="text"
-            class="form-control"
-            id="expediteur"
-            placeholder="Nom de l'expéditeur"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="mode_envoi" class="form-label"
-            >Mode de transmission</label
-          >
-          <select class="form-select" id="mode_envoi">
-            <option value="">Choisir une mode</option>
-            <option value="courrier">Mail</option>
-            <option value="email">Fax</option>
-            <option value="email">Cahier de transmission</option>
-            <option value="email">Accuse de recption</option>
-            <option value="email">Mains propres</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
+        <app-enregistrement-dest></app-enregistrement-dest>
+
 
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
       </form>
     </div>
-    <!-- Fermeture de la première div container -->
-    <br /><br /><br />
-    <div class="container text-center">
-      <h1>ARCHIVAGE GLOBALE</h1>
-      <p>des quatre dernières années</p>
-    </div>
+    <br /><br /> <br>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              id="rechercher"
-              placeholder="Rechercher"
-            />
-          </div>
+    <app-options></app-options>
 
-          <div class="row justify-content-center">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-success btn-block">
-                Valider
-              </button>
-            </div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-primary btn-block">
-                Menu général
-              </button>
-            </div>
-          </div>
-
-          <div class="row justify-content-center mt-3">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-primary btn-block">
-                Départ
-              </button>
-            </div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-primary btn-block">
-                Instances
-              </button>
-            </div>
-          </div>
-
-          <div class="row justify-content-center mt-3">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-danger btn-block">
-                Fermer
-              </button>
-            </div>
-            <div class="col-md-4">
-              <button type="button" class="btn btn-danger btn-block">
-                Quitter
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>

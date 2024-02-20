@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DestCourrierComponent } from './components/dest-courrier/dest-courrier.component';
 import { SendCourrierComponent } from './components/send-courrier/send-courrier.component';
+import { EnregistrementDestComponent } from './components/enregistrement-dest/enregistrement-dest.component';
+import { OptionsComponent } from './components/options/options.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SendCourrierComponent } from './components/send-courrier/send-courrier.
     NavbarComponent,
     LoginComponent,
     DestCourrierComponent,
-    SendCourrierComponent
+    SendCourrierComponent,
+    EnregistrementDestComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,

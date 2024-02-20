@@ -7,4 +7,3 @@ export class Courrier {
     type?: string;
     statut?: string;
   }
-  
