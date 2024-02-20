@@ -1,6 +1,6 @@
 // departement.ts
-export interface Departement {
-    id: number;
-    nom: string;
+export class Departement {
+    id?: number;
+    nom?: string;
   }
   

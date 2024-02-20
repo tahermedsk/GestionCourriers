@@ -1,6 +1,5 @@
 // direction.ts
-export interface Direction {
-    id: number;
-    nom: string;
+export class Direction {
+    id?: number;
+    nom?: string;
   }
-  

@@ -1,4 +1,4 @@
-export interface Cabinet {
-    id: number;
-    nom: string;
+export class Cabinet {
+    id?: number;
+    nom?: string;
 }
