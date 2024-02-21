@@ -52,6 +52,9 @@
       <div class="border border-dark p-4">
         <app-enregistrement-dest *ngIf="currentStep === 'Enregistrement'"></app-enregistrement-dest>
         <app-enregistrement-dest *ngIf="currentStep === 'Réception et enregistrement'"></app-enregistrement-dest>
+        <app-ventilation-dest *ngIf="currentStep == 'Lecture et ventilation'"></app-ventilation-dest>
+        <app-archivage-dest *ngIf="currentStep == 'Archivage'" ></app-archivage-dest>
+        <app-reponse-dest *ngIf="currentStep == 'Réponse'"></app-reponse-dest>
       </div>
 
     </form>
