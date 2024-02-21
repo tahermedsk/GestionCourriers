@@ -10,6 +10,9 @@ import { SendCourrierComponent } from './components/send-courrier/send-courrier.
 import { EnregistrementDestComponent } from './components/enregistrement-dest/enregistrement-dest.component';
 import { OptionsComponent } from './components/options/options.component';
 import { FormsModule } from '@angular/forms';
+import { VentilationDestComponent } from './components/ventilation-dest/ventilation-dest.component';
+import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.component';
+import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     DestCourrierComponent,
     SendCourrierComponent,
     EnregistrementDestComponent,
-    OptionsComponent
+    OptionsComponent,
+    VentilationDestComponent,
+    ReponseDestComponent,
+    ArchivageDestComponent
   ],
   imports: [
     BrowserModule,

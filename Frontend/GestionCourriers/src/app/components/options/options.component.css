@@ -1,0 +1,7 @@
+.btn-cell {
+    padding: 5px;
+    text-align: center;
+}
+.btn-cell .btn {
+    width: 100%;
+}
