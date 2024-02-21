@@ -1,24 +1,32 @@
-<form>
+<!-- Section: Design Block -->
+<div class="row justify-content-center">
+  <section class="col-md-6 col-lg-5 my-5">
 
-  <br>
-  <div class="container w-50 p-3">
-    <div class="form-group justify-content-center row">
-      <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Identifiant</label>
-      <div class="col-sm-9">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <br><br><br>
-    </div>
-    <div class="form-group justify-content-center row">
-      <label for="exampleInputPassword1" class="col-sm-3 col-form-label">Mot de passe</label>
-      <div class="col-sm-9">
-        <input type="password" class="form-control" id="exampleInputPassword1">
-      </div>
-    </div><br>
+        <form #signupForm="ngForm" (ngSubmit)="loginProcess(signupForm)">
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button type="submit" class="btn btn-primary me-md-2">Se connecter</button>
-    </div>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Idetifiant</label>
+            <input type="email" id="form3Example3" class="form-control" name="username" [(ngModel)]="username" required>
+          </div>
 
-  </div>
-</form>
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example4">Mot de passe</label>
+            <input type="password" id="form3Example4" class="form-control" minlength="8" name="password" [(ngModel)]="password" required>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-success btn-block mb-4">
+            Se connecter
+          </button>
+
+          <!-- Error message -->
+          <div class="alert alert-danger text-center mb-0" *ngIf="showErr">
+            Authentification échouée. Veuillez vérifier vos identifiants et réessayer.
+          </div>
+
+        </form>
+  </section>
+</div>
+<!-- Section: Design Block -->
