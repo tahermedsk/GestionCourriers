@@ -3,24 +3,29 @@
         <div class="col-md-6">
             <h4>Lecture</h4>
             <div class="form-group">
-                <label for="g5">5G</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="g5"
-                />
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sg_checkbox">
+                    <label class="form-check-label" for="sg_checkbox">
+                        SG
+                    </label>
+                </div>
+                <input type="date" class="form-control" id="sg">
             </div>
             <div class="form-group">
-                <label for="ministre">Ministre</label>
-                <input type="text" class="form-control" id="ministre" placeholder="Entrez le nom du ministre">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ministre_checkbox">
+                    <label class="form-check-label" for="ministre_checkbox">
+                        Ministre
+                    </label>
+                </div>
+                <input type="date" class="form-control" id="ministre">
             </div>
             <div class="form-group">
                 <label for="urgence">Degré d'urgence</label>
                 <select class="form-select" id="urgence">
                     <option value="">Sélectionnez...</option>
-                    <option value="faible">Faible</option>
-                    <option value="moyenne">Moyenne</option>
-                    <option value="elevee">Élevée</option>
+                    <option value="normal">Normal</option>
+                    <option value="urgent">Urgent</option>
                 </select>
             </div>
         </div>
@@ -40,6 +45,7 @@
             </div>  
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
             <div class="form-group border p-1">
