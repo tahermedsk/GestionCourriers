@@ -7,9 +7,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DestCourrierComponent } from './components/dest-courrier/dest-courrier.component';
 import { SendCourrierComponent } from './components/send-courrier/send-courrier.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { EnregistrementDestComponent } from './components/enregistrement-dest/enregistrement-dest.component';
 import { OptionsComponent } from './components/options/options.component';
-import { FormsModule } from '@angular/forms';
 import { VentilationDestComponent } from './components/ventilation-dest/ventilation-dest.component';
 import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.component';
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
@@ -21,6 +24,7 @@ import { ArchivageDestComponent } from './components/archivage-dest/archivage-de
     LoginComponent,
     DestCourrierComponent,
     SendCourrierComponent,
+    ResetPasswordComponent,
     EnregistrementDestComponent,
     OptionsComponent,
     VentilationDestComponent,
@@ -29,8 +33,19 @@ import { ArchivageDestComponent } from './components/archivage-dest/archivage-de
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        }
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
