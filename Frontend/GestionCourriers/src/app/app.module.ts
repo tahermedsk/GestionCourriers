@@ -9,6 +9,7 @@ import { DestCourrierComponent } from './components/dest-courrier/dest-courrier.
 import { SendCourrierComponent } from './components/send-courrier/send-courrier.component';
 import { EnregistrementDestComponent } from './components/enregistrement-dest/enregistrement-dest.component';
 import { OptionsComponent } from './components/options/options.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OptionsComponent } from './components/options/options.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

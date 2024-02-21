@@ -1,50 +1,106 @@
 <nav>
   <div class="container text-center">
     <div class="row">
-        <div>
-          <div class="fw-bold fs-4">الجمهورية الإسلامية الموريتانية</div>
-          <div class="text-center fs-5">شرف-إخاء-عدل</div>
-        </div>
+      <div>
+        <div class="fw-bold fs-4">الجمهورية الإسلامية الموريتانية</div>
+        <div class="text-center fs-5">شرف-إخاء-عدل</div>
+      </div>
 
-        <div class="col"><img class="rounded mx-auto d-block float-left" src="assets/mauritanie.png" height="200" width="200"></div>
+      <div class="col">
+        <img
+          class="rounded mx-auto d-block float-left"
+          src="assets/mauritanie.png"
+          height="200"
+          width="200"
+        />
+      </div>
 
-       <div><hr></div>
+      <div><hr /></div>
     </div>
     <div class="row">
-          <div class="fs-5">
-            République Islamique de Mauritanie <br>
-            <span>Honneur - Fraternité - Justice</span>
-          </div><br><br><br>
-          <div class="fs-5">
-            وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة
-            <br>
-            <span>Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration</span>
-          </div>
+      <div class="fs-5">
+        République Islamique de Mauritanie <br />
+        <span>Honneur - Fraternité - Justice</span>
       </div>
+      <br /><br /><br />
+      <div class="fs-5">
+        وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة
+        <br />
+        <span
+          >Ministère de la Transformation Numérique, de l'Innovation et de la
+          Modernisation de l'Administration</span
+        >
+      </div>
+    </div>
   </div>
-<br><br><br>
+  <br /><br /><br />
 
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded d-flex justify-content-center">
-  <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <nav
+    class="navbar navbar-expand-sm navbar-dark bg-dark rounded d-flex justify-content-center"
+  >
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <div class="navbar-nav">
-              <div class="vertical-line"></div>
-              <button class="nav-link btn fs-4" [routerLink]="['/login']" routerLinkActive="router-link-active" >Accueil</button>
-              <div class="vertical-line mx-4"></div> <!-- Adjust the mx-3 for more or less space -->
-              <button class="nav-link btn fs-4" [routerLink]="['/dest']" routerLinkActive="router-link-active" >Courrier arrivée</button>
-              <div class="vertical-line mx-4"></div>
-              <button class="nav-link btn fs-4" [routerLink]="['/send']" routerLinkActive="router-link-active" >Courrier départ</button>
-              <div class="vertical-line mx-4"></div>
-              <button class="nav-link btn fs-4" href="#">Statistiques</button>
-              <div class="vertical-line mx-4"></div>
-              <button *ngIf="isLoginPage()" class="nav-link btn active fs-4" href="#">Login</button>
-              <div class="vertical-line mx-3"></div>
-              <button *ngIf="!isLoginPage()" class="nav-link btn fs-4" [routerLink]="['/login']" routerLinkActive="router-link-active" >Se déconnecter</button>
-          </div>
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarNav"
+      >
+        <div class="navbar-nav">
+          <div class="vertical-line"></div>
+          <button
+            class="nav-link btn fs-4"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+          >
+            Accueil
+          </button>
+          <div class="vertical-line mx-4"></div>
+          <!-- Adjust the mx-3 for more or less space -->
+          <button
+            class="nav-link btn fs-4"
+            [routerLink]="['/dest']"
+            routerLinkActive="router-link-active"
+          >
+            Courrier arrivée
+          </button>
+          <div class="vertical-line mx-4"></div>
+          <button
+            class="nav-link btn fs-4"
+            [routerLink]="['/send']"
+            routerLinkActive="router-link-active"
+          >
+            Courrier départ
+          </button>
+          <div class="vertical-line mx-4"></div>
+          <button class="nav-link btn fs-4" href="#">Statistiques</button>
+          <div class="vertical-line mx-4"></div>
+          <button
+            *ngIf="isLoginPage()"
+            class="nav-link btn active fs-4"
+            href="#"
+          >
+            Login
+          </button>
+          <div class="vertical-line mx-3"></div>
+          <button
+            *ngIf="!isLoginPage()"
+            class="nav-link btn fs-4"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+          >
+            Se déconnecter
+          </button>
+        </div>
       </div>
-  </div>
+    </div>
+  </nav>
 </nav>

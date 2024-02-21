@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DestCourrierComponent implements OnInit {
 
+  currentStep: string = "Enregistrement";
+
   constructor() { }
 
   ngOnInit(): void {
