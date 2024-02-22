@@ -20,8 +20,5 @@ public class Courrier {
     private String type;
     private String statut;
 
-    public Courrier(){
-    }
-
 
 }

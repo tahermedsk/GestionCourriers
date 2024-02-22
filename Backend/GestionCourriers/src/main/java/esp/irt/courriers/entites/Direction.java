@@ -18,7 +18,4 @@ public class Direction {
     private Departement departement;
 
 
-    public Direction() {
-    }
-
 }

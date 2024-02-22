@@ -19,8 +19,6 @@ public class Departement {
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
     private List<Direction> directions;
 
-    public Departement(){
-    }
 
 
 }

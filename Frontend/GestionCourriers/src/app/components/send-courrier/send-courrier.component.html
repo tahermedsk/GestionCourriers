@@ -1,1 +1,75 @@
-<p>send-courrier works!</p>
+<div class="container">
+    <br />
+    <div class="d-flex justify-content-center">
+      <div class="text-center">
+        <h1>COURRIER DEPART</h1>
+        <h4>{{ currentStep }}</h4>
+      </div>
+    </div>
+    <hr />
+    <form class="row g-3 align-items-end">
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100">Nouveau</button>
+      </div>
+      <div class="col-md-3">
+        <label for="numero" class="form-label">N°</label>
+        <input
+          type="text"
+          class="form-control"
+          id="numero"
+          placeholder="Numéro"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" />
+      </div>
+      <div class="col-md-4">
+        <label for="etape_actuelle" class="form-label">Direction</label>
+        <input type="text" class="form-control" id="observations" placeholder="observations" >
+      </div>
+      <!-- Boutons de sélection d'étape -->
+      <div class="row">
+        <div class="col-md-3 mt-3"> <!-- Adjust the width and margin based on your needs -->
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="btn_ministere"/> Ministere
+                </label>
+            </div>
+        </div>
+    
+        <div class="col-md-3 mt-3"> <!-- Adjust the width and margin based on your needs -->
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="btn_SG" /> SG
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-dark">
+            <input type="radio" name="options" id="btn_reception" (change)="currentStep='Enregistrement-Transmission'" value="Enregistrement-Transmission" /> Enregistrement-Transmission
+          </label>
+          <label class="btn btn-dark">
+            <input type="radio" name="options" id="btn_lecture" (change)="currentStep='Reponse'" value="Reponse" /> Reponse
+          </label>
+          <label class="btn btn-dark">
+            <input type="radio" name="options" id="btn_reponse" (change)="currentStep='Archivage'" value="Archivage" /> Archivage
+          </label>
+        </div>
+      </div>
+    
+      <div class="border border-dark p-4">
+        <app-enregistrement-send *ngIf="currentStep === 'Enregistrement-Transmission'"></app-enregistrement-send>
+        <app-archivage-dest *ngIf="currentStep == 'Archivage'" ></app-archivage-dest>
+        <app-reponse-dest *ngIf="currentStep == 'Reponse'"></app-reponse-dest>
+      </div>
+
+    </form>
+  </div>
+  <br /><br />
+  <br />
+  
+  <app-options></app-options>
