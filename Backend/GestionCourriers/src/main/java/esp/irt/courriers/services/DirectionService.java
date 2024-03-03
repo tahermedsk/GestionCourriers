@@ -25,7 +25,21 @@ public class DirectionService {
         return directionRepository.save(direction);
     }
 
+    public Direction updateDirection(Long id, Direction direction) {
+        if (directionRepository.existsById(id)) {
+            direction.setId(id);
+            return directionRepository.save(direction);
+        }
+        return null;
+    }
+
     public void deleteDirection(Long id) {
         directionRepository.deleteById(id);
+    }
+
+    // New functionality
+
+    public Direction getDirectionByCode(Long code) {
+        return directionRepository.findByCode(code);
     }
 }

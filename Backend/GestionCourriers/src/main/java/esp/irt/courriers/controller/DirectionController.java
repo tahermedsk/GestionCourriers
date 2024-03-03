@@ -1,52 +1,56 @@
 package esp.irt.courriers.controller;
 
-import esp.irt.courriers.entites.Direction;
-import esp.irt.courriers.repository.DirectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import esp.irt.courriers.entites.Direction;
+import esp.irt.courriers.services.DirectionService;
+
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/directions")
+@RequestMapping("/directions")
 public class DirectionController {
-
+    
     @Autowired
-    private DirectionRepository directionRepository;
+    private DirectionService directionService;
 
     @GetMapping
-    public ResponseEntity<List<Direction>> getAllDirections() {
-        List<Direction> directions = directionRepository.findAll();
-        return new ResponseEntity<>(directions, HttpStatus.OK);
+    public List<Direction> getAllDirections() {
+        return directionService.getAllDirections();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Direction> getDirectionById(@PathVariable Long id) {
-        Optional<Direction> direction = directionRepository.findById(id);
-        return direction.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        Direction direction = directionService.getDirectionById(id);
+        return direction != null ? ResponseEntity.ok(direction) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public ResponseEntity<Direction> createDirection(@RequestBody Direction direction) {
-        Direction createdDirection = directionRepository.save(direction);
-        return new ResponseEntity<>(createdDirection, HttpStatus.CREATED);
+    public ResponseEntity<Direction> saveDirection(@RequestBody Direction direction) {
+        Direction savedDirection = directionService.saveDirection(direction);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedDirection);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Direction> updateDirection(@PathVariable Long id, @RequestBody Direction direction) {
+        Direction updatedDirection = directionService.updateDirection(id, direction);
+        return updatedDirection != null ? ResponseEntity.ok(updatedDirection) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDirection(@PathVariable Long id) {
-        directionRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        directionService.deleteDirection(id);
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllDirections() {
-        directionRepository.deleteAll();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    // New endpoint for finding by code
 
-    // Ajoutez d'autres méthodes selon les besoins (mise à jour, suppression, recherche par ID, etc.)
+    @GetMapping("/code/{code}")
+    public ResponseEntity<Direction> getDirectionByCode(@PathVariable Long code) {
+        Direction direction = directionService.getDirectionByCode(code);
+        return direction != null ? ResponseEntity.ok(direction) : ResponseEntity.notFound().build();
+    }
 }

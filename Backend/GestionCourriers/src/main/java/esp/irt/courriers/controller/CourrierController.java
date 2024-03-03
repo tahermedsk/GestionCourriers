@@ -1,52 +1,64 @@
 package esp.irt.courriers.controller;
 
-import esp.irt.courriers.entites.Courrier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import esp.irt.courriers.repository.CourrierRepository;
+
+import esp.irt.courriers.entites.Courrier;
+import esp.irt.courriers.services.CourrierService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/courriers")
+@RequestMapping("/courriers")
 public class CourrierController {
-
+    
     @Autowired
-    private CourrierRepository courrierRepository;
+    private CourrierService courrierService;
+
+    // CRUD Operations
 
     @GetMapping
-    public ResponseEntity<List<Courrier>> getAllCourriers() {
-        List<Courrier> courriers = courrierRepository.findAll();
-        return new ResponseEntity<>(courriers, HttpStatus.OK);
+    public List<Courrier> getAllCourriers() {
+        return courrierService.getAllCourriers();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Courrier> getCourrierById(@PathVariable Long id) {
-        Optional<Courrier> courrier = courrierRepository.findById(id);
-        return courrier.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        Courrier courrier = courrierService.getCourrierById(id);
+        return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public ResponseEntity<Courrier> createCourrier(@RequestBody Courrier courrier) {
-        Courrier createdCourrier = courrierRepository.save(courrier);
-        return new ResponseEntity<>(createdCourrier, HttpStatus.CREATED);
+    public ResponseEntity<Courrier> saveCourrier(@RequestBody Courrier courrier) {
+        Courrier savedCourrier = courrierService.saveCourrier(courrier);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCourrier);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Courrier> updateCourrier(@PathVariable Long id, @RequestBody Courrier courrier) {
+        Courrier updatedCourrier = courrierService.updateCourrier(id, courrier);
+        return updatedCourrier != null ? ResponseEntity.ok(updatedCourrier) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourrier(@PathVariable Long id) {
-        courrierRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        courrierService.deleteCourrier(id);
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllCourriers() {
-        courrierRepository.deleteAll();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    // Additional Operations
+
+    @GetMapping("/numero/{numero}")
+    public ResponseEntity<Courrier> getCourrierByNumero(@PathVariable Long numero) {
+        Courrier courrier = courrierService.getCourrierByNumero(numero);
+        return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
     }
 
-    // Ajoutez d'autres méthodes selon les besoins (mise à jour, suppression, recherche par ID, etc.)
+    @GetMapping("/ref/{refCourrier}")
+    public ResponseEntity<Courrier> getCourrierByRef(@PathVariable Long refCourrier) {
+        Courrier courrier = courrierService.getCourrierByRef(refCourrier);
+        return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
+    }
 }

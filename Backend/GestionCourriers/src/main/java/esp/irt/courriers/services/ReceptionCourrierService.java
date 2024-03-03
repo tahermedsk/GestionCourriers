@@ -25,6 +25,14 @@ public class ReceptionCourrierService {
         return receptionCourrierRepository.save(receptionCourrier);
     }
 
+    public ReceptionCourrier updateReceptionCourrier(Long id, ReceptionCourrier receptionCourrier) {
+        if (receptionCourrierRepository.existsById(id)) {
+            receptionCourrier.setId(id);
+            return receptionCourrierRepository.save(receptionCourrier);
+        }
+        return null;
+    }
+
     public void deleteReceptionCourrier(Long id) {
         receptionCourrierRepository.deleteById(id);
     }

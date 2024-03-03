@@ -25,7 +25,25 @@ public class CourrierService {
         return courrierRepository.save(courrier);
     }
 
+    public Courrier updateCourrier(Long id, Courrier courrier) {
+        if (courrierRepository.existsById(id)) {
+            courrier.setId(id);
+            return courrierRepository.save(courrier);
+        }
+        return null;
+    }
+
     public void deleteCourrier(Long id) {
         courrierRepository.deleteById(id);
+    }
+
+    // New functionalities
+
+    public Courrier getCourrierByNumero(Long numero) {
+        return courrierRepository.findByNumero(numero);
+    }
+
+    public Courrier getCourrierByRef(Long refCourrier) {
+        return courrierRepository.findByRefCourrier(refCourrier);
     }
 }

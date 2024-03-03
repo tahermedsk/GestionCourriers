@@ -1,52 +1,56 @@
 package esp.irt.courriers.controller;
 
-import esp.irt.courriers.entites.Departement;
-import esp.irt.courriers.repository.DepartementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import esp.irt.courriers.entites.Departement;
+import esp.irt.courriers.services.DepartementService;
+
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/departements")
+@RequestMapping("/departements")
 public class DepartementController {
-
+    
     @Autowired
-    private DepartementRepository departementRepository;
+    private DepartementService departementService;
 
     @GetMapping
-    public ResponseEntity<List<Departement>> getAllDepartements() {
-        List<Departement> departements = departementRepository.findAll();
-        return new ResponseEntity<>(departements, HttpStatus.OK);
+    public List<Departement> getAllDepartements() {
+        return departementService.getAllDepartements();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Departement> getDepartementById(@PathVariable Long id) {
-        Optional<Departement> departement = departementRepository.findById(id);
-        return departement.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        Departement departement = departementService.getDepartementById(id);
+        return departement != null ? ResponseEntity.ok(departement) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public ResponseEntity<Departement> createDepartement(@RequestBody Departement departement) {
-        Departement createdDepartement = departementRepository.save(departement);
-        return new ResponseEntity<>(createdDepartement, HttpStatus.CREATED);
+    public ResponseEntity<Departement> saveDepartement(@RequestBody Departement departement) {
+        Departement savedDepartement = departementService.saveDepartement(departement);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedDepartement);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Departement> updateDepartement(@PathVariable Long id, @RequestBody Departement departement) {
+        Departement updatedDepartement = departementService.updateDepartement(id, departement);
+        return updatedDepartement != null ? ResponseEntity.ok(updatedDepartement) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDepartement(@PathVariable Long id) {
-        departementRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        departementService.deleteDepartement(id);
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllDepartements() {
-        departementRepository.deleteAll();
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    // New endpoint for finding by code
 
-    // Ajoutez d'autres méthodes selon les besoins (mise à jour, suppression, recherche par ID, etc.)
+    @GetMapping("/code/{code}")
+    public ResponseEntity<Departement> getDepartementByCode(@PathVariable Long code) {
+        Departement departement = departementService.getDepartementByCode(code);
+        return departement != null ? ResponseEntity.ok(departement) : ResponseEntity.notFound().build();
+    }
 }

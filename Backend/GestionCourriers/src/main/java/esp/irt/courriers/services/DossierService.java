@@ -25,6 +25,14 @@ public class DossierService {
         return dossierRepository.save(dossier);
     }
 
+    public Dossier updateDossier(Long id, Dossier dossier) {
+        if (dossierRepository.existsById(id)) {
+            dossier.setId(id);
+            return dossierRepository.save(dossier);
+        }
+        return null;
+    }
+
     public void deleteDossier(Long id) {
         dossierRepository.deleteById(id);
     }

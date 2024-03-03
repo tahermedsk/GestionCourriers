@@ -25,6 +25,14 @@ public class LectureVentilationService {
         return lectureVentilationRepository.save(lectureVentilation);
     }
 
+    public LectureVentilation updateLectureVentilation(Long id, LectureVentilation lectureVentilation) {
+        if (lectureVentilationRepository.existsById(id)) {
+            lectureVentilation.setId(id);
+            return lectureVentilationRepository.save(lectureVentilation);
+        }
+        return null;
+    }
+
     public void deleteLectureVentilation(Long id) {
         lectureVentilationRepository.deleteById(id);
     }

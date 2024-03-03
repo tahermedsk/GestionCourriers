@@ -25,7 +25,21 @@ public class DepartementService {
         return departementRepository.save(departement);
     }
 
+    public Departement updateDepartement(Long id, Departement departement) {
+        if (departementRepository.existsById(id)) {
+            departement.setId(id);
+            return departementRepository.save(departement);
+        }
+        return null;
+    }
+
     public void deleteDepartement(Long id) {
         departementRepository.deleteById(id);
+    }
+
+    // New functionality
+
+    public Departement getDepartementByCode(Long code) {
+        return departementRepository.findByCode(code);
     }
 }

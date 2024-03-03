@@ -25,6 +25,14 @@ public class TransmissionCourrierService {
         return transmissionCourrierRepository.save(transmissionCourrier);
     }
 
+    public TransmissionCourrier updateTransmissionCourrier(Long id, TransmissionCourrier transmissionCourrier) {
+        if (transmissionCourrierRepository.existsById(id)) {
+            transmissionCourrier.setId(id);
+            return transmissionCourrierRepository.save(transmissionCourrier);
+        }
+        return null;
+    }
+
     public void deleteTransmissionCourrier(Long id) {
         transmissionCourrierRepository.deleteById(id);
     }
