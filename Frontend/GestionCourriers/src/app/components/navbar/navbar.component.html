@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="!isLoginPage()">
   <div class="container text-center">
     <div class="row">
       <div>
@@ -91,14 +91,7 @@
             Login
           </button>
           <div class="vertical-line mx-3"></div>
-          <button
-            *ngIf="!isLoginPage()"
-            class="nav-link btn fs-4"
-            [routerLink]="['/login']"
-            routerLinkActive="router-link-active"
-          >
-            Se déconnecter
-          </button>
+          <button href="/login" (click)="logout()" class="nav-link btn fs-4" href="#">Se déconnecter</button>
         </div>
       </div>
     </div>
