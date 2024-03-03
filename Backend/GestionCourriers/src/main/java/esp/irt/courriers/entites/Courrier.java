@@ -2,23 +2,34 @@ package esp.irt.courriers.entites;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Date;
+import java.util.List;
 
-@Entity @Data
+import javax.persistence.*;
+
+@Entity 
+@Data
+
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Courrier {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     private Long numero ;
-    private String nom_emeteur;
-    private String nom_destinateur;
-    private String type;
-    private String statut;
+    private Date dateEnregistrement;
+    private Long refCourrier;
+
+    private String codeBarre;
+
+    private String objet;
+    private String observation;
+   @Enumerated(EnumType.STRING)
+    private ModeTransmusion modeTransmission;
+    private Date dateReception;
+    @OneToMany(mappedBy = "courrier", cascade = CascadeType.ALL)
+    private List<Dossier> dossiers;
 
 
 }

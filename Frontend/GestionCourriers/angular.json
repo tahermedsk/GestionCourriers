@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "GestionCourriers:build:production"
+              "buildTarget": "GestionCourriers:build:production"
             },
             "development": {
-              "browserTarget": "GestionCourriers:build:development"
+              "buildTarget": "GestionCourriers:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "GestionCourriers:build"
+            "buildTarget": "GestionCourriers:build"
           }
         },
         "test": {
