@@ -2,20 +2,19 @@ package esp.irt.courriers.entites;
 
 import lombok.Data;
 
+import java.util.List;
+
 import javax.persistence.*;
 
-@Entity @Data
+@Entity 
+@Data
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long code;
-
     private String libelle;
 
-    @ManyToOne
-    @JoinColumn(name = "direction_id")
-    private Direction direction;
-
-
+    @OneToMany(mappedBy = "departement") // One Departement can have multiple Directions
+    private List<Direction> directions;
 }

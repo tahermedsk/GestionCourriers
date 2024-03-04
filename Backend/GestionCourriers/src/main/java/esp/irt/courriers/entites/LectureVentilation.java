@@ -24,13 +24,14 @@ public class LectureVentilation {
     private Date date_ventilation;
     private String observation;
     private String annotation;
-    @OneToMany(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
-    private List<Direction> directions;
+    @ManyToOne // Many LectureVentilations can belong to one Direction
+    @JoinColumn(name = "direction_id")
+    private Direction direction;
 
     
 
-    @OneToMany(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
-    private List<ReceptionCourrier> receptionCourriers;
+    @OneToOne(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
+    private ReceptionCourrier receptionCourrier;
 
 
 
