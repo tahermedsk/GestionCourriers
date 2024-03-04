@@ -25,7 +25,8 @@ public class Direction {
     @OneToMany(mappedBy = "direction") // One Direction can have multiple ReceptionCourrier instances
     private List<ReceptionCourrier> receptionCourriers;
 
-    @OneToMany(mappedBy = "direction") // One Direction can have multiple TransmissionCourrier instances
+    @OneToMany(mappedBy = "direction") 
     private List<TransmissionCourrier> transmissionCourriers;
+
 
 }

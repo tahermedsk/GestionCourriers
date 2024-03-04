@@ -25,15 +25,13 @@ public class LectureVentilation {
     private String observation;
     private String annotation;
     @ManyToOne // Many LectureVentilations can belong to one Direction
-    @JoinColumn(name = "direction_id")
+    @JoinColumn(name = "direction")
     private Direction direction;
 
     
 
     @OneToOne(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
     private ReceptionCourrier receptionCourrier;
-
-
 
     
 }
