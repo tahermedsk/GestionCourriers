@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity 
 @Data
-
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Courrier {
 
@@ -17,19 +16,20 @@ public class Courrier {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    private Long numero ;
+    private Long numero;
     private Date dateEnregistrement;
     private Long refCourrier;
-
     private String codeBarre;
-
     private String objet;
     private String observation;
-   @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private ModeTransmusion modeTransmission;
     private Date dateReception;
-    @OneToMany(mappedBy = "courrier", cascade = CascadeType.ALL)
-    private List<Dossier> dossiers;
+
+    @ManyToOne
+    @JoinColumn(name = "dossier_id") // Nom de la colonne pour la relation avec le dossier
+    private Dossier dossier;
+    
 
 
 }

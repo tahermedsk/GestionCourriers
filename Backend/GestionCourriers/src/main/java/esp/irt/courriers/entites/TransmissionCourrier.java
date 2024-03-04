@@ -12,14 +12,10 @@ public class TransmissionCourrier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name = "expediteur_id") // Nom de colonne pour la relation avec l'expéditeur
-    private Direction expediteur;
     
-    @ManyToOne
-    @JoinColumn(name = "destinataire_id") // Nom de colonne pour la relation avec le destinataire
-    private Direction destinataire;
-
+    @ManyToOne // Many TransmissionCourriers belong to one Direction
+    @JoinColumn(name = "direction") // Nom de colonne pour la relation avec la direction
+    private Direction direction;
     // Getters and setters
 }
 

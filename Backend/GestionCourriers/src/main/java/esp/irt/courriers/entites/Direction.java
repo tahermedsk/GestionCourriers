@@ -1,32 +1,32 @@
 package esp.irt.courriers.entites;
 
-
 import lombok.Data;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-@Entity @Data
+@Entity 
+@Data
 public class Direction {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long code;
     private String libelle;
-    @ManyToOne
-    private Departement departement;
-    @OneToMany(mappedBy = "direction", cascade = CascadeType.ALL)
-    private List<Departement> departements;
-    @ManyToOne
-    @JoinColumn(name = "reception_courrier_id")
-    private ReceptionCourrier receptionCourrier;
-    @ManyToOne
-    @JoinColumn(name = "transmissioncourrier_id")
-    private TransmissionCourrier transmissionCourrier;
-    @ManyToOne
-    @JoinColumn(name = "lectureVentilation_id")
-    private LectureVentilation lectureVentilation;
+
+    @ManyToOne // Many Directions can belong to one Departement
+    @JoinColumn(name = "departement_id")
+    private Departement departement; // Change from List<Departement> to single Departement
+
+    @OneToMany(mappedBy = "direction") // One Direction can have multiple LectureVentilation instances
+    private List<LectureVentilation> lectureVentilations;
+
+    @OneToMany(mappedBy = "direction") // One Direction can have multiple ReceptionCourrier instances
+    private List<ReceptionCourrier> receptionCourriers;
+
+    @OneToMany(mappedBy = "direction") 
+    private List<TransmissionCourrier> transmissionCourriers;
+
 
 }

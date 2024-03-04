@@ -15,11 +15,11 @@ public class ReceptionCourrier extends Courrier {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    // Correction de l'annotation mappedBy pour faire référence à l'attribut de Direction approprié
-    @OneToMany(mappedBy = "receptionCourrier", cascade = CascadeType.ALL)
-    private List<Direction> directions;
+    @ManyToOne // Many ReceptionCourriers can belong to one Direction
+    @JoinColumn(name = "direction")
+    private Direction direction;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "lecture_ventilation_id")
     private LectureVentilation lectureVentilation;
 
