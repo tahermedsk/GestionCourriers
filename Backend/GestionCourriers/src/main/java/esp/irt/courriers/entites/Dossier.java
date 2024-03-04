@@ -1,5 +1,7 @@
 package esp.irt.courriers.entites;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import lombok.Data;
@@ -14,7 +16,7 @@ public class Dossier {
     private Long code;
     private Long libelle;
 
-    @ManyToOne
-    @JoinColumn(name = "courrier_id") // Many Dossiers belong to one Courrier
-    private Courrier courrier;
+    @OneToMany(mappedBy = "dossier")
+    private List<Courrier> courriers;
+
 }

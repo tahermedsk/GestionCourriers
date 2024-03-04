@@ -33,7 +33,5 @@ public class LectureVentilation {
     @OneToOne(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
     private ReceptionCourrier receptionCourrier;
 
-
-
     
 }
