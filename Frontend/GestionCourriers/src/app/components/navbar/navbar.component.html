@@ -1,39 +1,41 @@
-<nav *ngIf="!isLoginPage()">
+<nav>
   <div class="container text-center">
     <div class="row">
-      <div>
-        <div class="fw-bold fs-4">الجمهورية الإسلامية الموريتانية</div>
-        <div class="text-center fs-5">شرف-إخاء-عدل</div>
-      </div>
-
-      <div class="col">
+      <div class="col-md-6">
         <img
-          class="rounded mx-auto d-block float-left"
-          src="assets/mauritanie.png"
-          height="200"
-          width="200"
-        />
+        src="assets/mauritanie.png"
+        height="200"
+        width="200"
+        style="position: absolute; top: 0; left: 0;"
+      />
+      <div class="col" style="margin-left: 150px;">
+       <br>
+        <div class="text-center fs-5">République Islamique de Mauritanie</div>
+        <div class="text-center  fs-5">Honneur - Fraternité - Justice</div>
+       
+        <div class="text-center  fs-5"><span
+          >Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration</span></div>
       </div>
+    </div>
+    
+    <div class="col">
+      <div class="fw-bold fs-4"></div>
+      <div class="text-center fs-5"></div>
+      <div class="fw-bold fs-4"></div>
 
-      <div><hr /></div>
-    </div>
-    <div class="row">
-      <div class="fs-5">
-        République Islamique de Mauritanie <br />
-        <span>Honneur - Fraternité - Justice</span>
       </div>
-      <br /><br /><br />
-      <div class="fs-5">
-        وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة
-        <br />
-        <span
-          >Ministère de la Transformation Numérique, de l'Innovation et de la
-          Modernisation de l'Administration</span
-        >
-      </div>
-    </div>
-  </div>
-  <br /><br /><br />
+      <div class="col">
+        <br>
+        <div class="text-center fs-5">الجمهورية الإسلامية الموريتانية</div>
+        <div class="text-center fs-5">شرف-إخاء-عدل</div>
+        <div class="text-center fs-5">وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة</div>
+  
+        </div>
+       
+      </div></div>
+      
+      
+    
 
   <nav
     class="navbar navbar-expand-sm navbar-dark bg-dark rounded d-flex justify-content-center"
@@ -91,7 +93,14 @@
             Login
           </button>
           <div class="vertical-line mx-3"></div>
-          <button href="/login" (click)="logout()" class="nav-link btn fs-4" href="#">Se déconnecter</button>
+          <button
+            *ngIf="!isLoginPage()"
+            class="nav-link btn fs-4"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+          >
+            Se déconnecter
+          </button>
         </div>
       </div>
     </div>
