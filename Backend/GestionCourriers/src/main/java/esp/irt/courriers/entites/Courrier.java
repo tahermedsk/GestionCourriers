@@ -3,8 +3,6 @@ package esp.irt.courriers.entites;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity 
@@ -26,8 +24,8 @@ public class Courrier {
     private ModeTransmusion modeTransmission;
     private Date dateReception;
 
-    @OneToMany(mappedBy = "courrier", cascade = CascadeType.ALL)
-    private Dossier dossier; // Change from List<Dossier> to single Dossier
+    @OneToOne(mappedBy = "courrier", cascade = CascadeType.ALL)
+    private Dossier dossier;
 
     @ManyToOne // Many Courriers can have one expediteur
     @JoinColumn(name = "expediteur_id")
