@@ -1,6 +1,5 @@
 package esp.irt.courriers.entites;
 
-import java.util.List;
 
 import javax.persistence.*;
 

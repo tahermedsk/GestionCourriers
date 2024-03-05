@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class TransmissionCourrier {
+public class TransmissionCourrier extends Courrier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
