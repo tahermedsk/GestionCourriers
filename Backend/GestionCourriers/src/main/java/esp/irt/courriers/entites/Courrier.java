@@ -23,7 +23,7 @@ public class Courrier {
     private String objet;
     private String observation;
     @Enumerated(EnumType.STRING)
-    private ModeTransmusion modeTransmission;
+    private ModeTransmission modeTransmission;
     private Date dateReception;
 
     @ManyToOne
