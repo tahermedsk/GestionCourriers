@@ -1,6 +1,8 @@
-// departement.ts
+import { Direction } from "./direction";
+
 export class Departement {
     id?: number;
-    nom?: string;
-  }
-  
+  code?: number;
+  libelle?: string;
+  directions?: Direction[];
+}
