@@ -16,7 +16,7 @@ public class ReceptionCourrier extends Courrier {
 
     @ManyToOne // Many ReceptionCourriers can belong to one Direction
     @JoinColumn(name = "direction")
-    private Direction direction;
+    private Direction expediteur;
 
     @OneToOne
     @JoinColumn(name = "lecture_ventilation_id")
