@@ -40,6 +40,7 @@ public class SecurityConfig {
                .antMatchers("/auth/**").permitAll()
 //                .requestMatchers("*").hasAuthority("ADMINISTRATOR")
                 .anyRequest().authenticated();
+                http.cors();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

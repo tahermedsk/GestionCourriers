@@ -7,7 +7,7 @@ import { TransmissionCourrier } from '../models/transmission-courrier';
   providedIn: 'root'
 })
 export class TransmissionCourrierService {
-  private url = '/api/transmission-courriers';
+  private url = '/api/transmissioncourriers';
 
   constructor(private http: HttpClient) { }
 

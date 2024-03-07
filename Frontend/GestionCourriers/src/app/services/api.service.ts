@@ -102,7 +102,7 @@ export class ApiService {
     return this.http.delete(url, { headers: this.getHeaders() });
   }
   
-  private getHeaders(customHeaders?: { [header: string]: string }): HttpHeaders {
+  getHeaders(customHeaders?: { [header: string]: string }): HttpHeaders {
     let headers = this.headers;
     const token = localStorage.getItem('access-token');
     if (token) {
