@@ -10,6 +10,7 @@ import esp.irt.courriers.services.LectureVentilationService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/lectureventilations")
 public class LectureVentilationController {

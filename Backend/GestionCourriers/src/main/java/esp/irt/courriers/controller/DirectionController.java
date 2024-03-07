@@ -10,6 +10,7 @@ import esp.irt.courriers.services.DirectionService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/directions")
 public class DirectionController {
