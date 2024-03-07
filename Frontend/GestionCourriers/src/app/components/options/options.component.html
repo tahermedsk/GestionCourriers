@@ -1,66 +1,162 @@
-<div class="container">
-  <div class="row">
-      <div class="col-md-6 offset-md-3">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th colspan="2" class="text-center">
-                          ARCHIVAGE GLOBALE<br>
-                          des quatre dernières années
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-danger">
-                              M
-                          </button>
-                      </td>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-dark">
-                            Recherches
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-success">
-                              Valider
-                          </button>
-                      </td>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-warning">
-                              Menu général
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-primary">
-                              Départ
-                          </button>
-                      </td>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-primary">
-                              Instances
-                          </button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-danger">
-                              Fermer
-                          </button>
-                      </td>
-                      <td class="btn-cell">
-                          <button type="button" class="btn btn-danger">
-                              Quitter
-                          </button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
+<html>
+    <header>
+<style>
+
+    /* Services Section
+--------------------------------*/
+#services {
+  padding: 40px 0;
+}
+#services .box {
+  padding: 40px;
+  box-shadow: 10px 10px 15px rgba(73, 78, 92, 0.1);
+  background: #fff;
+  transition: 0.4s;
+  height: 100%;
+}
+#services .box:hover {
+  box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+}
+#services .box .icon {
+  float: left;
+}
+#services .box .icon i {
+  color: #444;
+  font-size: 64px;
+  transition: 0.5s;
+  line-height: 0;
+  margin-top: 34px;
+}
+#services .box .icon i:before {
+  background: #0c2e8a;
+  background:  LightGreen;
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#services .box h4 {
+  margin-left: 100px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+#services .box h4 a {
+  color: #444;
+}
+#services .box p {
+  font-size: 14px;
+  margin-left: 100px;
+  margin-bottom: 0;
+  line-height: 24px;
+}
+@media (max-width: 767px) {
+  #services .box .box {
+    margin-bottom: 20px;
+  }
+  #services .box .icon {
+    float: none;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  #services .box h4, #services .box p {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+</style>
+    </header>
+    <body>
+
+  
+
+
+
+
+ <!-- ======= Services Section ======= -->
+ <section id="services">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        
+        <div id="logo" style="" class="text-center">
+         <h1 >
+           <a style="color: #59946d;  font-family: Times New Roman;" href="#"> Archivage<span style="color: #50d8af;  font-family: Times New Roman;"> Globale </span></a></h1>
+             <h2>des quatre dernières années</h2>
+        </div><br>
+         </div>
+  
+      <div class="row gy-4">
+  
+        
+  
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="box">
+            <div class="icon"><i class="bi bi-bookmark-check"></i></div>
+            <h4 class="title"><a href="#">Valider</a></h4>
+          </div>
+        </div>
+  
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="box">
+            <div class="icon"><i class="bi bi-list-task"></i></div>
+            <h4 class="title"><a href="#">Menu general</a></h4>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-arrow-up-circle"></i></div>
+              <h4 class="title"><a href="#">Depart</a></h4>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-calendar2-range"></i></div>
+              <h4 class="title"><a href="#">Instances</a></h4>
+            </div>
+          </div>
+
+          
+  
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="box">
+              <div class="icon"><i class="bi bi-arrow-repeat"></i></div>
+              <h4 class="title"><a href="#"  type="button">M</a></h4>
+              
+            </div>
+          </div>
+    
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <div class="icon"><i class="bi bi-search"></i></div>
+              <h4 class="title"><a href="#">Recherches</a></h4>
+            </div>
+          </div>
+
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-x-circle"></i></div>
+              <h4 class="title"><a href="#">Fermer</a></h4>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-x-square-fill"></i></div>
+              <h4 class="title"><a href="#">Quitter</a></h4>
+            </div>
+          </div>
+
       </div>
-  </div>
-</div>
+  
+    </div>
+  </section>
+
+</body>
+</html>
