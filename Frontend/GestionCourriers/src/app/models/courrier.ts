@@ -12,4 +12,6 @@ export class Courrier {
   modeTransmission?: ModeTransmission;
   dateReception?: Date;
   dossier?: Dossier;
+  piecesJointes?: File;
+  copieDoc?: File;
 }

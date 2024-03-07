@@ -1,68 +1,68 @@
 <div class="container">
-    <div class="row g-3">
-        <div class="col-md-3">
-            <label for="code" class="form-label">Code / الرمز</label>
-            <input type="text" class="form-control" id="code" placeholder="Code du document" />
+    <form (ngSubmit)="enregistrerTransmissionCourrier()" #transmissionForm="ngForm">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="code" class="form-label">Code / الرمز</label>
+                <input type="text" class="form-control" id="code" placeholder="Code du document" [(ngModel)]="transmissionCourrier.codeBarre" name="codeBarre">
+            </div>
+            <div class="col-md-3">
+                <label for="destinateur" class="form-label">Destinateur / المرسل</label>
+                <input type="text" class="form-control" id="expediteur" placeholder="Nom de destinateur" [(ngModel)]="transmissionCourrier.desinateur" name="destinateur">
+            </div>
+            <div class="col-md-6">
+                <label for="Ampliations" class="form-label">Ampliations</label>
+                <input type="text" class="form-control" id="Ampliations" placeholder="Ampliations" [(ngModel)]="transmissionCourrier.ampliations" name="ampliations">
+            </div>
         </div>
-        <div class="col-md-3">
-            <label for="destinateur" class="form-label">Destinateur / المرسل</label>
-            <input type="text" class="form-control" id="expediteur" placeholder="Nom de destinateur" />
-        </div>
-        <div class="col-md-6">
-            <label for="Ampliations" class="form-label">Ampliations</label>
-            <input type="text" class="form-control" id="Ampliations" placeholder="Ampliations" />
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-row g-2">
-                <label for="refCourrier" class="col-sm-3"><b>Réf du courrier / المرجع البريدي</b></label>
-                <div class="form-group col-sm-9">
-                    <div class="row">
-                        <div class="col">
-                            <label for="numero">N° / الرقم</label>
-                            <input type="number" class="form-control" id="numero" placeholder="Numéro courrier" />
-                        </div>
-                        <div class="col">
-                            <label for="date">Date / التاريخ</label>
-                            <input type="date" class="form-control" id="date" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form row g-2">
+                    <label for="refCourrier" class="col-sm-3"><b>Réf du courrier / المرجع البريدي</b></label>
+                    <div class="form-group col-sm-9">
+                        <div class="row">
+                            <div class="col">
+                                <label for="numero">N° / الرقم</label>
+                                <input type="number" class="form-control" id="numero" placeholder="Numéro courrier" [(ngModel)]="transmissionCourrier.refCourrier" name="refCourrier">
+                            </div>
+                            <div class="col">
+                                <label for="date">Date / التاريخ</label>
+                                <input type="date" class="form-control" id="date" [(ngModel)]="transmissionCourrier.dateReception" name="dateReception">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="codeBarre">Code Barre</label>
+                    <input type="text" class="form-control" id="codeBarre" placeholder="Entrez le code barre" [(ngModel)]="transmissionCourrier.codeBarre" name="codeBarre">
+                </div>
+                <div class="form-group">
+                    <label for="numeroDossier">Nº Dossier - رقم الملف</label>
+                    <input type="text" class="form-control" id="numeroDossier" placeholder="Entrez le numéro du dossier" [(ngModel)]="transmissionCourrier.dossier" name="numeroDossier">
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="piecesJointes">Pièces Jointes</label>
+                    <input type="file" class="form-control-file" id="piecesJointes" [(ngModel)]="transmissionCourrier.piecesJointes" name="piecesJointes">
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="copieDoc">Copie du doc &nbsp;</label>
+                    <input type="file" class="form-control-file" id="copieDoc" [(ngModel)]="transmissionCourrier.copieDoc" name="copieDoc">
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="codeBarre">Code Barre</label>
-                <input type="text" class="form-control" id="codeBarre" placeholder="Entrez le code barre" />
-            </div>
-            <div class="form-group">
-                <label for="numeroDossier">Nº Dossier - رقم الملف</label>
-                <input type="text" class="form-control" id="numeroDossier" placeholder="Entrez le numéro du dossier" />
-            </div>
-            <br />
-            <div class="form-group">
-                <label for="piecesJointes">Pièces Jointes</label>
-                <input type="file" class="form-control-file" id="piecesJointes" />
-            </div>
-            <br />
-            <div class="form-group">
-                <label for="copieDoc">Copie du doc &nbsp;</label>
-                <input type="file" class="form-control-file" id="copieDoc" />
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="objet">Objet / الموضوع</label>
+                    <textarea class="form-control" id="objet" rows="5" [(ngModel)]="transmissionCourrier.objet" name="objet"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="observations">Observations / الملاحظات</label>
+                    <textarea class="form-control" id="observations" rows="5" [(ngModel)]="transmissionCourrier.observation" name="observations"></textarea>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="objet">Objet / الموضوع</label>
-                <textarea class="form-control" id="objet" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="observations">Observations / الملاحظات</label>
-                <textarea class="form-control" id="observations" rows="5"></textarea>
-            </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-lg">Enregistrer</button>
         </div>
-    </div>
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary btn-lg">Enregistrer</button>
-    </div>
+    </form>
 </div>

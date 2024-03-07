@@ -1,62 +1,63 @@
 <div class="container">
-    <br />
-    <div class="d-flex justify-content-center">
-      <div class="text-center">
-        <h1>COURRIER ARRIVEE</h1>
-        <h4>{{ currentStep }}</h4>
+  <br />
+  <div class="d-flex justify-content-center">
+    <div class="text-center">
+      <h1>COURRIER ARRIVEE</h1>
+      <h4>{{ currentStep }}</h4>
+    </div>
+  </div>
+  <hr />
+  <form class="row g-3 align-items-end">
+    <div class="col-md-2">
+      <button class="btn btn-primary w-100" (click)="nouveauCourrier()">Nouveau</button>
+    </div>
+    <div class="col-md-3">
+      <label for="numero" class="form-label">N°</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numero"
+        placeholder="Numéro"
+        [(ngModel)]="courrier.numero"
+      />
+    </div>
+    <div class="col-md-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" [(ngModel)]="courrier.dateEnregistrement"/>
+    </div>
+    
+    <!-- Boutons de sélection d'étape -->
+    <div class="col-md-12 mt-3">
+      <h4 class="mb-3">Sélectionnez une étape:</h4>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="btn_reception" (change)="currentStep='Réception et enregistrement'" value="Réception et enregistrement" /> Réception et
+          enregistrement
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="btn_lecture" (change)="currentStep='Lecture et ventilation'" value="Lecture et ventilation" /> Lecture et
+          ventilation
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="btn_reponse" (change)="currentStep='Réponse'" value="Réponse" /> Réponse
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="btn_archivage" (change)="currentStep='Archivage'" value="Archivage" /> Archivage
+        </label>
       </div>
     </div>
-    <hr />
-    <form class="row g-3 align-items-end">
-      <div class="col-md-2">
-        <button class="btn btn-primary w-100">Nouveau</button>
-      </div>
-      <div class="col-md-3">
-        <label for="numero" class="form-label">N°</label>
-        <input
-          type="text"
-          class="form-control"
-          id="numero"
-          placeholder="Numéro"
-        />
-      </div>
-      <div class="col-md-3">
-        <label for="date" class="form-label">Date</label>
-        <input type="date" class="form-control" id="date" />
-      </div>
-      
-      <!-- Boutons de sélection d'étape -->
-      <div class="col-md-12 mt-3">
-        <h4 class="mb-3">Sélectionnez une étape:</h4>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-dark">
-            <input type="radio" name="options" id="btn_reception" (change)="currentStep='Réception et enregistrement'" value="Réception et enregistrement" /> Réception et
-            enregistrement
-          </label>
-          <label class="btn btn-dark">
-            <input type="radio" name="options" id="btn_lecture" (change)="currentStep='Lecture et ventilation'" value="Lecture et ventilation" /> Lecture et
-            ventilation
-          </label>
-          <label class="btn btn-dark">
-            <input type="radio" name="options" id="btn_reponse" (change)="currentStep='Réponse'" value="Réponse" /> Réponse
-          </label>
-          <label class="btn btn-dark">
-            <input type="radio" name="options" id="btn_archivage" (change)="currentStep='Archivage'" value="Archivage" /> Archivage
-          </label>
-        </div>
-      </div>
-      
-      <div class="border border-dark p-4">
-        <app-enregistrement-dest *ngIf="currentStep === 'Enregistrement'"></app-enregistrement-dest>
-        <app-enregistrement-dest *ngIf="currentStep === 'Réception et enregistrement'"></app-enregistrement-dest>
-        <app-ventilation-dest *ngIf="currentStep == 'Lecture et ventilation'"></app-ventilation-dest>
-        <app-archivage-dest *ngIf="currentStep == 'Archivage'" ></app-archivage-dest>
-        <app-reponse-dest *ngIf="currentStep == 'Réponse'"></app-reponse-dest>
-      </div>
+    
+    <div class="border border-dark p-4">
+      <app-enregistrement-dest *ngIf="currentStep === 'Enregistrement'"></app-enregistrement-dest>
+      <app-enregistrement-dest *ngIf="currentStep === 'Réception et enregistrement'"></app-enregistrement-dest>
+      <app-ventilation-dest *ngIf="currentStep == 'Lecture et ventilation'"></app-ventilation-dest>
+      <app-archivage-dest *ngIf="currentStep == 'Archivage'" ></app-archivage-dest>
+      <app-reponse-dest *ngIf="currentStep == 'Réponse'"></app-reponse-dest>
+    </div>
 
-    </form>
-  </div>
-  <br /><br />
-  <br />
-  
-  <app-options></app-options>
+  </form>
+</div>
+<br /><br />
+<br />
+
+<app-options></app-options>
