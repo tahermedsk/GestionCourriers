@@ -1,44 +1,47 @@
-<nav>
+<nav style=" transition: all 0.5s;
+z-index: 997;
+background: white;
+box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);">
   <div class="container text-center">
     <div class="row">
       <div class="col-md-6">
-        <img
-        src="assets/mauritanie.png"
-        height="200"
-        width="200"
-        style="position: absolute; top: 0; left: 0;"
-      />
-      <div class="col" style="margin-left: 150px;">
-       <br>
-        <div class="text-center fs-5">République Islamique de Mauritanie</div>
-        <div class="text-center  fs-5">Honneur - Fraternité - Justice</div>
-       
-        <div class="text-center  fs-5"><span
-          >Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration</span></div>
+        <img src="assets/mauritanie.png" height="150" width="150" style="position: absolute; top: 0; left: 0;">
+        <div class="col" style="margin-left: 30px; font-family: Times New Roman;">
+        
+          <div class="text-center fs-5">République Islamique de Mauritanie</div>
+          <div class="text-center fs-5">Honneur - Fraternité - Justice</div>
+          <div class="text-center fs-5">
+            <span>Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration</span>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <div class="col">
-      <div class="fw-bold fs-4"></div>
-      <div class="text-center fs-5"></div>
-      <div class="fw-bold fs-4"></div>
+  
+      <div class="col-md-3">
+        <div class="fw-bold fs-4"></div>
 
+        <div class="text-center fs-5"></div>
+        <div class="fw-bold fs-4"></div>
       </div>
-      <div class="col">
-        <br>
+  
+      <div class="col-md-3" style="font-family: Times New Roman;">
+        
         <div class="text-center fs-5">الجمهورية الإسلامية الموريتانية</div>
         <div class="text-center fs-5">شرف-إخاء-عدل</div>
         <div class="text-center fs-5">وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة</div>
+      </div>
+    </div>
+  </div>
   
-        </div>
-       
-      </div></div>
       
       
-    
+    <br>
 
-  <nav
-    class="navbar navbar-expand-sm navbar-dark bg-dark rounded d-flex justify-content-center"
+  <nav style=" font-family: Times New Roman;   transition: all 0.5s;
+  z-index: 997;
+  background: white;
+  
+  box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);"
+    class="navbar navbar-expand-sm  rounded d-flex justify-content-center"
   >
     <div class="container-fluid">
       <button
@@ -63,7 +66,7 @@
             [routerLink]="['/login']"
             routerLinkActive="router-link-active"
           >
-            Accueil
+          <i class="bi bi-house-door-fill"></i><b> Accueil</b>
           </button>
           <div class="vertical-line mx-4"></div>
           <!-- Adjust the mx-3 for more or less space -->
@@ -72,7 +75,7 @@
             [routerLink]="['/dest']"
             routerLinkActive="router-link-active"
           >
-            Courrier arrivée
+          <i class="bi bi-file-earmark-text"></i> <b>Courrier arrivée</b>
           </button>
           <div class="vertical-line mx-4"></div>
           <button
@@ -80,17 +83,17 @@
             [routerLink]="['/send']"
             routerLinkActive="router-link-active"
           >
-            Courrier départ
+          <i class="bi bi-file-earmark-text-fill"></i> <b>Courrier départ</b> 
           </button>
           <div class="vertical-line mx-4"></div>
-          <button class="nav-link btn fs-4" href="#">Statistiques</button>
+          <button class="nav-link btn fs-4" href="#"><i class="bi bi-reception-4"></i><b> Statistiques </b></button>
           <div class="vertical-line mx-4"></div>
           <button
             *ngIf="isLoginPage()"
             class="nav-link btn active fs-4"
             href="#"
           >
-            Login
+          <i class="bi bi-box-arrow-in-right"></i> <b> Se Connecter</b>
           </button>
           <div class="vertical-line mx-3"></div>
           <button
@@ -99,7 +102,7 @@
             [routerLink]="['/login']"
             routerLinkActive="router-link-active"
           >
-            Se déconnecter
+          <i class="bi bi-box-arrow-in-left"></i><b> Se déconnecter</b>
           </button>
         </div>
       </div>
