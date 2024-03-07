@@ -4,12 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable, map } from 'rxjs';
 
 export interface Links {
-  first?: {href: string};
-  self?: {href: string};
-  next?: {href: string};
-  last?: {href: string};
-  profile?: {href: string};
-  search?: {href: string};
+
 }
 export interface ApiResult {
   //[x: string]: string;
@@ -113,4 +108,16 @@ export class ApiService {
     }
     return headers;
   }
+  createUser(userData:any, url: string) {
+
+    const user = {
+      username: userData[0].username,
+      password: userData[0].password,
+      role:userData[0].role
+      // Ajoutez ici d'autres champs si nécessaire
+    };
+    console.log(user);
+    return this.http.post(environment.serverURL +'/api'+url,user);
+  }
+
 }

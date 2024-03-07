@@ -5,13 +5,15 @@ import { DestCourrierComponent } from './components/dest-courrier/dest-courrier.
 import { SendCourrierComponent } from './components/send-courrier/send-courrier.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AuthGuard } from './services/auth.guard';
+import {GestionUserComponent} from "./components/gestion-user/gestion-user.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/login' , pathMatch: 'full' },
   {path:'login',component:LoginComponent},
   {path:'dest',component:DestCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
   {path:'send',component:SendCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
-  {path:"reset-password",component:ResetPasswordComponent, canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }}
+  {path:"reset-password",component:ResetPasswordComponent, canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
+  {path:"gestionuser",component:GestionUserComponent ,canActivate:[AuthGuard],data:{allowedRoles: ['ADMIN']}}
 ];
 
 @NgModule({

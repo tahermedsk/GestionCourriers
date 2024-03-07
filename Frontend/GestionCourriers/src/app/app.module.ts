@@ -17,6 +17,7 @@ import { VentilationDestComponent } from './components/ventilation-dest/ventilat
 import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.component';
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
+import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EnregistrementSendComponent } from './components/enregistrement-send/en
     VentilationDestComponent,
     ReponseDestComponent,
     ArchivageDestComponent,
-    EnregistrementSendComponent
+    EnregistrementSendComponent,
+    GestionUserComponent
   ],
   imports: [
     BrowserModule,
