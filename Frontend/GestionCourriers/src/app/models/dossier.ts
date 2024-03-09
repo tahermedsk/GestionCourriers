@@ -2,7 +2,7 @@ import { Courrier } from "./courrier";
 
 export class Dossier {
     id?: number;
-    code?: number;
-    libelle?: string;
+    code?: string; // Change type to string
+    libelle?: string; // Change type to string
     courriers?: Courrier[];
 }

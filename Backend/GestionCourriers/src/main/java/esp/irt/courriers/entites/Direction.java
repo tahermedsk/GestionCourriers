@@ -27,9 +27,16 @@ public class Direction {
 
     @OneToMany(mappedBy = "destinateur") 
     private List<TransmissionCourrier> transmissionCourriers;
+
+    public Direction(String directionValue) {
+        this.libelle = directionValue;
+        // Initialize other fields as needed...
+    }
     
+
     @ManyToOne
-    private ReceptionCourrier transmissionCourrier;
+    @JoinColumn(name = "ampliation")
+    private TransmissionCourrier transmissionCourrier;
     
 
 

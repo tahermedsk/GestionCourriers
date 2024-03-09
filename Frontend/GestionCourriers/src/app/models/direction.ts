@@ -6,7 +6,7 @@ import { TransmissionCourrier } from './transmission-courrier';
 export class Direction {
   id?: number;
   code?: number;
-  libelle?: string;
+  libelle?: String;
   departement?: Departement;
   lectureVentilations?: LectureVentilation[];
   receptionCourriers?: ReceptionCourrier[];
