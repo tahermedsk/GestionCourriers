@@ -64,7 +64,8 @@ export class NavbarComponent {
     this.router.navigate(['/chef-dept']);
   }
   gotoResePassword(){
-    this.router.navigate(['/reset-password']);
+    this.logout();
+    this.router.navigate(['/login']);
   }
   logout(){
     this.authService.logout();

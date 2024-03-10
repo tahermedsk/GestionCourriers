@@ -99,8 +99,7 @@ box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);">
           <button
             *ngIf="!isLoginPage()"
             class="nav-link btn fs-4"
-            [routerLink]="['/login']"
-            routerLinkActive="router-link-active"
+            href="/reset-password" (click)="gotoResePassword()"
           >
           <i class="bi bi-box-arrow-in-left"></i><b> Se déconnecter</b>
           </button>
