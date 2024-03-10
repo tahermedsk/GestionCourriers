@@ -6,22 +6,7 @@ import { Observable, map } from 'rxjs';
 export interface Links {
 
 }
-export interface ApiResult {
-  //[x: string]: string;
-  // message?: any;
-  page: {
-    size?: number;
-    totalElements?: number;
-    number?: number;
-  };
-  _embedded: {
-    etudiants: any;
-    societes? : any;
-    departements? : any;
-    choixes? : any;
-  };
-  _links?: Links;
-}
+export interface ApiResult {}
 @Injectable({
   providedIn: 'root'
 })
@@ -33,73 +18,11 @@ export class ApiService {
       'Content-Type': 'application/json'
     });
   }
-  post(url: string, data: any): Observable<any> {
-    return this.http.post<any>(environment.serverURL + url, data);
-  }
 
-  postRessource(url: string, data: any): Observable<ApiResult> {
-    return this.http.post<ApiResult>(environment.serverURL + url, data, { headers: this.getHeaders() });
-  }
-
-  uploadFiles(url:any, formData: FormData): Observable<any> {
-    return this.http.post<any>(environment.serverURL + url, formData);
-  }
-
-  postPhoto(url: string, data: any): Observable<any>{
-    return this.http.post(environment.serverURL + url, data, { headers: this.getHeaders() });
-  }
-
-  patchRessource(url: string, data: any) {
-    return this.http.patch<ApiResult>(environment.serverURL + url, data, { headers: this.getHeaders() });
-  }
-
-  getRessource(url: string): Observable<ApiResult> {
-    return this.http.get<ApiResult>(environment.serverURL + url, { headers: this.getHeaders() });
-  }
-
-  getRessourceByUrl(url: string): Observable<ApiResult> {
-    return this.http.get<ApiResult>(url, { headers: this.getHeaders() });
-  }
-
-  getRessourceAny(url: string): Observable<any> {
-    return this.http.get<any>(environment.serverURL + url, { headers: this.getHeaders() });
-  }
-
-  getRessourceFile(url: string): Observable<any> {
-    return this.http.get(environment.serverURL + url, {
-        headers: this.getHeaders(),
-        responseType: 'blob' // set the response type to blob
-    }).pipe(
-        map(res => {
-            const blob = new Blob([res], { type: 'application/pdf' }); // create a new blob from the response data
-            return URL.createObjectURL(blob); // return the URL of the blob
-        })
-    );
-}
-
-  getRessourceText(url: string): Observable<string> {
-    return this.http.get(environment.serverURL +url, { headers: this.getHeaders(), responseType: 'text' });
-  }
-
-  getRessourceByParam(url: string, annee: any): Observable<ApiResult> {
-    return this.http.get<ApiResult>(environment.serverURL + url + annee, { headers: this.getHeaders() });
-  }
-
-  putRessource(url: string, data: any) {
-    return this.http.put(url, data, { headers: this.getHeaders({ 'content-type': 'text/uri-list' }) });
-  }
-
-  deleteRessource(url: string) {
-    return this.http.delete(environment.serverURL + url, { headers: this.getHeaders() });
-  }
-  
-  deleteRessourceByUrl(url: string) {
-    return this.http.delete(url, { headers: this.getHeaders() });
-  }
-  
   getHeaders(customHeaders?: { [header: string]: string }): HttpHeaders {
     let headers = this.headers;
-    const token = localStorage.getItem('access-token');
+    const token = localStorage.getItem('access_token');
+    console.log(token);
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
@@ -108,6 +31,8 @@ export class ApiService {
     }
     return headers;
   }
+
+
   createUser(userData:any, url: string) {
 
     const user = {
@@ -117,7 +42,21 @@ export class ApiService {
       // Ajoutez ici d'autres champs si nécessaire
     };
     console.log(user);
-    return this.http.post(environment.serverURL +'/api'+url,user);
+    return this.http.post(environment.serverURL +'/api'+url,user,{ headers:this.getHeaders() });
   }
 
+
+
+  getRessource(url: string): Observable<ApiResult> {
+    console.log(this.getHeaders());
+    return this.http.get<ApiResult>(environment.serverURL + url, { headers: this.getHeaders() });
+  }
+
+  deleteById(url:string):Observable<any>{
+    return this.http.delete(environment.serverURL+url,{headers:this.getHeaders()});
+  }
+
+  resetPassword(url: string, id:number) {
+    return this.http.put(environment.serverURL+url,id,{headers:this.getHeaders()});
+  }
 }

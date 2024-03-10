@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
- //               .antMatchers("/auth/**").permitAll()
+         //       .antMatchers("/auth/**").permitAll()
                 .antMatchers("/**").permitAll()
 //                .requestMatchers("*").hasAuthority("ADMINISTRATOR")
                 .anyRequest().authenticated();

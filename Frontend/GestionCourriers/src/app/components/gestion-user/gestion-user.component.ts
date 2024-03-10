@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
+import {Subject} from 'rxjs';
+
 
 @Component({
   selector: 'app-gestion-user',
@@ -9,8 +11,13 @@ import {ApiService} from "../../services/api.service";
 })
 export class GestionUserComponent implements OnInit{
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
+
   username = '';
   password = '';
+  allUsers: any = [];
   roles:any;
   user:{[key:string]: string}[]=[];
   formgroupe: FormGroup;
@@ -29,8 +36,19 @@ export class GestionUserComponent implements OnInit{
     this.apiService.getRessource("/api/roles").subscribe((resp)=>{
       this.roles=resp;
       console.log(this.roles);
-    })
+    });
+
+    this.dtOptions = {
+      searching:true,
+
+      language:{
+        searchPlaceholder:'rechercher'
+      },
+    };
+
+    this.users();
   }
+
 
 
   onSubmit(formgroupe: FormGroup) {
@@ -42,9 +60,34 @@ export class GestionUserComponent implements OnInit{
     console.log(this.user);
     this.apiService.createUser(this.user,'/users').subscribe(res=> {
           console.log(res);
-        },
+          window.location.reload();
+        }
+        ,
         error => {
           console.log(error);
         });
+
+  }
+
+
+  users(){
+    this.apiService.getRessource("/api/users").subscribe((res)=>{
+      this.allUsers=res;
+      this.dtTrigger.next(null);
+    });
+  }
+
+  deletUser(user: any) {
+    window.alert(`tu veux vraiment supprimer l'utilisateur ${user.username}`);
+    this.apiService.deleteById("/api/users/"+user.id).subscribe((res)=>{
+      console.log(res);
+    });
+    window.location.reload();
+  }
+
+  resetPassword(user: any) {
+    this.apiService.resetPassword("/api/users/resetpassword",user.id).subscribe((res)=>{
+      console.log(res);
+    });
   }
 }

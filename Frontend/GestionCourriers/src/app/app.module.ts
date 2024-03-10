@@ -18,6 +18,11 @@ import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.com
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
 import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
+//si vous rencontrez une erreur dans le package suivant
+//vous devez maitre  'ng add angular-datatables'
+import {DataTablesModule} from 'angular-datatables';
+
+
 
 @NgModule({
   declarations: [
@@ -41,6 +46,7 @@ import { GestionUserComponent } from './components/gestion-user/gestion-user.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DataTablesModule,
     
 
     JwtModule.forRoot({

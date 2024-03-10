@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin("*")
@@ -31,7 +32,13 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         List<UserEntity> users = userRepository.findAll();
-        return ResponseEntity.ok(users);
+        List<UserEntity> usersWithoutPassword = users.stream()
+                .map(user -> {
+                    user.setPassword(null);
+                    return user;
+                })
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(usersWithoutPassword);
     }
 
     @PostMapping
@@ -68,4 +75,14 @@ public class UserController {
         userRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/resetpassword")
+    public ResponseEntity<Void> resetPassword(@RequestBody Long id) {
+        UserEntity user=userRepository.findById(id).get();
+        user.setPassword(passwordEncoder.encode("1234"));
+        userRepository.save(user);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
