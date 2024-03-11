@@ -14,7 +14,7 @@ public class ReceptionCourrier extends Courrier {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne // Many ReceptionCourriers can belong to one Direction
+    @ManyToOne(cascade = CascadeType.PERSIST) // Many ReceptionCourriers can belong to one Direction
     @JoinColumn(name = "direction")
     private Direction expediteur;
 

@@ -11,24 +11,24 @@
   <hr />
   <form class="row g-3 align-items-end">
     <div class="col-md-2">
-      <button style="background-color: LightGreen;" class="btn btn-info w-100">Nouveau</button>
+      <button style="background-color: LightGreen;" class="btn btn-info w-100 shadow">Nouveau</button>
     </div>
     <div class="col-md-3">
       <label for="numero" class="form-label">N°</label>
-      <input
+      <input 
         type="text"
-        class="form-control"
+        class="form-control shadow"
         id="numero"
         placeholder="Numéro"
       />
     </div>
     <div class="col-md-3">
-      <label for="date" class="form-label">Date</label>
-      <input type="date" class="form-control" id="date" />
+      <label for="date" class="form-label ">Date</label>
+      <input type="date" class="form-control  shadow" id="date" />
     </div>
     <div class="col-md-4">
-      <label for="etape_actuelle" class="form-label">Etape Actuelle</label>
-      <input type="text" class="form-control" id="etape_actuelle" [value]="currentStep">
+      <label for="etape_actuelle" class="form-label ">Etape Actuelle</label>
+      <input type="text" class="form-control shadow" id="etape_actuelle" [value]="currentStep">
     </div>
     <!-- Boutons de sélection d'étape -->
     <div class="col-md-12 mt-3">
