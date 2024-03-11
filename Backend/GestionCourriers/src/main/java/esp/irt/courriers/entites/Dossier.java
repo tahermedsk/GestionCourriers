@@ -4,23 +4,22 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Dossier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long code;
-    private Long libelle;
+    private String libelle;
 
-    public Dossier(Long libelle) {
-        this.libelle = libelle;
-    }
 
-    @OneToMany(mappedBy = "dossier")
-    private List<Courrier> courriers;
 
 }

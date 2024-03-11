@@ -1,6 +1,8 @@
 package esp.irt.courriers.entites;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -8,7 +10,8 @@ import javax.persistence.*;
 
 @Entity 
 @Data
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class LectureVentilation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +32,8 @@ public class LectureVentilation {
 
     
 
-    @OneToOne(mappedBy = "lectureVentilation", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "receptionCourrier_id")
     private ReceptionCourrier receptionCourrier;
 
     

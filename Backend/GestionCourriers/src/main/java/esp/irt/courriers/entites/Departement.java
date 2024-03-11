@@ -1,6 +1,8 @@
 package esp.irt.courriers.entites;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -8,6 +10,8 @@ import javax.persistence.*;
 
 @Entity 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +19,5 @@ public class Departement {
     private Long code;
     private String libelle;
 
-    @OneToMany(mappedBy = "departement") // One Departement can have multiple Directions
-    private List<Direction> directions;
+
 }

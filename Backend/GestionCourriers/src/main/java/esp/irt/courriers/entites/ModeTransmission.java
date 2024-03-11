@@ -2,6 +2,7 @@ package esp.irt.courriers.entites;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
+
 public enum ModeTransmission {
     mains_propres,
     Mail,
