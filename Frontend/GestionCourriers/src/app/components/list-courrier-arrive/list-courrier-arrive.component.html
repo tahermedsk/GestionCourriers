@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>List Courriers Arrives</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Numero</th>
+          <th scope="col">Code</th>
+          <th scope="col">Expéditeur</th>
+          <th scope="col">Mode de Transmission</th>
+          <th scope="col">Réf du Courrier</th>
+          <th scope="col">Date de Réception</th>
+          <th scope="col">Nº Dossier</th>
+          <th scope="col">Code Barre</th>
+          <th scope="col">Pièces Jointes</th>
+          <th scope="col">Copie doc</th>
+          <th scope="col">Objet</th>
+          <th scope="col">Observation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let courrier of courriers">
+          <td>{{ courrier.numero }}</td>
+          <td>{{ courrier.codeBarre }}</td>
+          <td>{{ courrier.expediteur }}</td>
+          <td>{{ courrier.modeTransmission }}</td>
+          <td>{{ courrier.refCourrier }}</td>
+          <td>{{ courrier.dateReception }}</td>
+          <td>{{ courrier.dossier }}</td>
+          <td>{{ courrier.codeBarre }}</td>
+          <td>{{ courrier.piecesJointes }}</td>
+          <td>{{ courrier.copieDoc }}</td>
+          <td>{{ courrier.objet }}</td>
+          <td>{{ courrier.observation }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

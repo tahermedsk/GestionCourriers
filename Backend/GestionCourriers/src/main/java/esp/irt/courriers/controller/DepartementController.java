@@ -10,6 +10,7 @@ import esp.irt.courriers.services.DepartementService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/departements")
 public class DepartementController {

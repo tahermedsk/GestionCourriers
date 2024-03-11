@@ -16,6 +16,10 @@ public class Dossier {
     private Long code;
     private Long libelle;
 
+    public Dossier(Long libelle) {
+        this.libelle = libelle;
+    }
+
     @OneToMany(mappedBy = "dossier")
     private List<Courrier> courriers;
 

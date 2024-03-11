@@ -17,6 +17,10 @@ import { VentilationDestComponent } from './components/ventilation-dest/ventilat
 import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.component';
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
+import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
+import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
+import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
+import { ListCourrierArriveComponent } from './components/list-courrier-arrive/list-courrier-arrive.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { EnregistrementSendComponent } from './components/enregistrement-send/en
     VentilationDestComponent,
     ReponseDestComponent,
     ArchivageDestComponent,
-    EnregistrementSendComponent
+    EnregistrementSendComponent,
+    GestionUserComponent,
+    ListCourrierComponent,
+    ListCourrierDepartComponent,
+    ListCourrierArriveComponent
   ],
   imports: [
     BrowserModule,

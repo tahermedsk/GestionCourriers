@@ -1,0 +1,40 @@
+<div class="container">
+  <br />
+
+  <div class="list-group">
+    <a
+      class="list-group-item list-group-item-action"
+      [class.active]="selectedTab === 'depart'"
+      (click)="showDepartList()"
+      [ngStyle]="
+        selectedTab === 'depart'
+          ? { 'background-color': 'green', color: 'white' }
+          : null
+      "
+      >Courriers Departs</a
+    >
+    <a
+      class="list-group-item list-group-item-action"
+      [class.active]="selectedTab === 'arrive'"
+      (click)="showArriveList()"
+      [ngStyle]="
+        selectedTab === 'arrive'
+          ? { 'background-color': 'green', color: 'white' }
+          : null
+      "
+      >Courriers Arrives</a
+    >
+  </div>
+  <div class="col-md-9">
+    <div class="tab-content">
+      <div *ngIf="selectedTab === 'depart'" class="tab-pane fade show active">
+        <br />
+        <app-list-courrier-depart></app-list-courrier-depart>
+      </div>
+      <div *ngIf="selectedTab === 'arrive'" class="tab-pane fade show active">
+        <br />
+        <app-list-courrier-arrive></app-list-courrier-arrive>
+      </div>
+    </div>
+  </div>
+</div>

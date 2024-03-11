@@ -3,6 +3,6 @@ import { Direction } from "./direction";
 
 export class TransmissionCourrier extends Courrier {
   direction?:Direction;
-  desinateur?: Direction;
+  destinateur?: Direction;
   ampliations?: Direction[];
 }

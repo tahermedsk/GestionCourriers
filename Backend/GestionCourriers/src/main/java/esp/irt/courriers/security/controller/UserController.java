@@ -1,22 +1,32 @@
 // UserController.java
 package esp.irt.courriers.security.controller;
 
+import esp.irt.courriers.security.dto.UserDto;
+import esp.irt.courriers.security.model.Role;
 import esp.irt.courriers.security.model.UserEntity;
+import esp.irt.courriers.security.repository.RoleRepository;
 import esp.irt.courriers.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public ResponseEntity<List<UserEntity>> getAllUsers() {
@@ -25,9 +35,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
-        UserEntity newUser = userRepository.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    public ResponseEntity<UserEntity> createUser(@RequestBody UserDto user) {
+        UserEntity newUser = new UserEntity();
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role role=roleRepository.findByName(user.getRole()).get();
+        newUser.setRoles(Collections.singletonList(role));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(newUser));
     }
 
     @GetMapping("/{id}")
