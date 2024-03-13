@@ -1,5 +1,6 @@
 package esp.irt.courriers.entites;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
@@ -26,8 +27,10 @@ public class Courrier {
     private Date dateReception;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dossier_id") // Nom de la colonne pour la relation avec le dossier
+    @JoinColumn(name = "dossier_id")
     private Dossier dossier;
+
+    public Courrier(){}
     
     
 
