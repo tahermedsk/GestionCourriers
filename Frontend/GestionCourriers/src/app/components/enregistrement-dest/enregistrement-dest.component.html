@@ -7,17 +7,16 @@
         class="form-control shadow"
         id="code"
         placeholder="Code du document"
+        [(ngModel)]="code"
+        (input)="onInputChange()"
         [(ngModel)]="receptionCourrier.codeBarre"
       />
     </div>
     <div class="col-md-3">
       <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
-      <select class="form-select shadow" id="expediteur" [(ngModel)]="receptionCourrier.expediteur">
-        <option value="Mail">A</option>
-        <option value="Fax">B</option>
-        
-      </select>
-      
+      <div class="rectangle">
+        <p>Expediteur: {{ libelle}}</p>
+      </div>
     </div>
     <div class="col-md-6">
       <label for="mode_envoi" class="form-label ">Mode de transmission / طريقة الإرسال</label>

@@ -28,16 +28,23 @@
                 <label for="date">Date</label>
                 <input type="date" class="form-control shadow" id="date" [(ngModel)]="lectureVentilation.date_ventilation">
             </div>
-            <div class="form-group">
-                <label for="direction">Direction</label>
-                
-
-                 <select class="form-select shadow" id="direction" [(ngModel)]="lectureVentilation.direction">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    
-                  </select>
-            </div>
+            <div class="col-md-3">
+                <label for="code" class="form-label ">Code / الرمز</label>
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  id="code"
+                  placeholder="Code du document"
+                  [(ngModel)]="code"
+                  (input)="onInputChange()"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="expediteur" class="form-label">Direction</label>
+                <div class="rectangle">
+                  <p>Direction: {{ libelle}}</p>
+                </div>
+              </div>
             
         </div>
     </div>

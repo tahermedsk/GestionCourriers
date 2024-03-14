@@ -3,11 +3,13 @@
         <div class="row g-3">
             <div class="col-md-3">
                 <label for="code" class="form-label">Code / الرمز</label>
-                <input type="text" class="form-control shadow" id="code" placeholder="Code du document" [(ngModel)]="transmissionCourrier.codeBarre" name="codeBarre">
+                <input type="text" class="form-control shadow" id="code" placeholder="Code du document"         [(ngModel)]="code" (input)="onInputChange()" [(ngModel)]="transmissionCourrier.codeBarre" name="codeBarre">
             </div>
             <div class="col-md-3">
-                <label for="destinateur" class="form-label">Destinateur / المرسل</label>
-                <input type="text" class="form-control shadow" id="expediteur" placeholder="Nom de destinateur" [(ngModel)]="transmissionCourrier.destinateur" name="destinateur">
+                <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
+                <div class="rectangle">
+                  <p>Expediteur: {{ libelle}}</p>
+                </div>
             </div>
             <div class="col-md-6">
                 <label for="Ampliations" class="form-label">Ampliations</label>

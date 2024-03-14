@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -21,11 +20,12 @@ import { GestionUserComponent } from './components/gestion-user/gestion-user.com
 
 //si vous rencontrez une erreur dans le package suivant
 //vous devez maitre  'ng add angular-datatables'
-import {DataTablesModule} from 'angular-datatables';
+//import {DataTablesModule} from 'angular-datatables';
 
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
 import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
 import { ListCourrierArriveComponent } from './components/list-courrier-arrive/list-courrier-arrive.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
