@@ -8,7 +8,4 @@ export class Direction {
   code?: number;
   libelle?: String;
   departement?: Departement;
-  lectureVentilations?: LectureVentilation[];
-  receptionCourriers?: ReceptionCourrier[];
-  transmissionCourriers?: TransmissionCourrier[];
 }
