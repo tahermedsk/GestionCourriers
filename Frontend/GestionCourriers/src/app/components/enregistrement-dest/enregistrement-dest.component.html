@@ -90,15 +90,12 @@
     /><br>
   </div>
   <div class="form-group">
-    <label for="numeroDossier">Nº Dossier - رقم الملف</label>
-    <input 
-      type="text"
-      class="form-control shadow"
-      id="numeroDossier"
-      placeholder="Entrez le numéro du dossier"
-      [(ngModel)]="receptionCourrier.dossier"
-    /><br>
+    <label for="dossier">Dossier / الملف</label>
+    <select class="form-select shadow" id="dossier" [(ngModel)]="receptionCourrier.dossier">
+      <option *ngFor="let dossier of dossiers" [value]="dossier.id">{{ dossier.libelle }}</option>
+    </select>
   </div>
+<br>
 
 
 </div>

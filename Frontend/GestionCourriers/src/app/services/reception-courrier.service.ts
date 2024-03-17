@@ -40,7 +40,7 @@ export class ReceptionCourrierService {
     const jwtToken = localStorage.getItem('access_token');
     console.log('JWT Token:', jwtToken);
     
-
+    console.log(receptionCourrier);
     return this.http.post<ReceptionCourrier>(this.url, receptionCourrier, { headers:{'Content-Type':'application/json','Authorization':`Bearer ${jwtToken}`,'Access-Control-Allow-Origin':'*'}});
   }
 
