@@ -31,6 +31,7 @@ public class ReceptionCourrierController {
 
     @PostMapping
     public ResponseEntity<ReceptionCourrier> saveReceptionCourrier(@RequestBody ReceptionCourrier receptionCourrier) {
+        System.out.println(receptionCourrier);
         ReceptionCourrier savedReceptionCourrier = receptionCourrierService.saveReceptionCourrier(receptionCourrier);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedReceptionCourrier);
     }
