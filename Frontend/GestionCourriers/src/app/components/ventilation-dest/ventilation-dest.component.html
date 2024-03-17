@@ -20,7 +20,6 @@
                 </div>
                 <input type="date" class="form-control shadow" id="ministre" [(ngModel)]="lectureVentilation.date_ministre">
             </div>
-          
         </div>
         <div class="col-md-6">
             <h4>Ventilation</h4>
@@ -30,22 +29,14 @@
             </div>
             <div class="col-md-3">
                 <label for="code" class="form-label ">Code / الرمز</label>
-                <input
-                  type="text"
-                  class="form-control shadow"
-                  id="code"
-                  placeholder="Code du document"
-                  [(ngModel)]="code"
-                  (input)="onInputChange()"
-                />
-              </div>
-              <div class="col-md-3">
+                <input type="text" class="form-control shadow" id="code" placeholder="Code du document" [(ngModel)]="code" (input)="onInputChange()">
+            </div>
+            <div class="col-md-3">
                 <label for="expediteur" class="form-label">Direction</label>
                 <div class="rectangle">
-                  <p>Direction: {{ libelle}}</p>
+                    <p>Direction: {{ libelle }}</p>
                 </div>
-              </div>
-            
+            </div>
         </div>
     </div>
     <br>
@@ -58,10 +49,12 @@
             <option value="urgent">Urgent</option>
         </select>
     </div>
-    <div class="row"><div class="form-group">
-        <label for="annotations">Annotations</label>
-        <textarea class="form-control " id="annotations" rows="3" [(ngModel)]="lectureVentilation.annotation"></textarea>
-    </div>  </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="annotations">Annotations</label>
+            <textarea class="form-control " id="annotations" rows="3" [(ngModel)]="lectureVentilation.annotation"></textarea>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="form-group border p-1">
@@ -75,5 +68,8 @@
             <br>
             <button type="submit" class="btn btn-success btn-lg" (click)="enregistrerLectureVentilation()">Terminé</button>
         </div>
+    </div>
+    <div *ngIf="submitted">
+        <h4>Le Courrier arrive a été lu et ventilé avec succès...</h4>
     </div>
 </div>
