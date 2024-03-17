@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../services/api.service";
 import {Subject} from 'rxjs';
 
+import { DataTablesModule } from 'angular-datatables';
 
 @Component({
   selector: 'app-gestion-user',
@@ -10,7 +11,7 @@ import {Subject} from 'rxjs';
   styleUrls: ['./gestion-user.component.css']
 })
 export class GestionUserComponent implements OnInit{
-
+  
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
