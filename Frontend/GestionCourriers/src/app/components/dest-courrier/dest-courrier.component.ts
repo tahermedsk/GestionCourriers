@@ -17,9 +17,10 @@ export class DestCourrierComponent implements OnInit {
   }
 
   nouveauCourrier(): void {
-    this.courrier = new Courrier(); 
-    const today = new Date(); 
-    this.courrier.dateEnregistrement = today; 
+    // this.courrier = new Courrier(); 
+    // const today = new Date(); 
+    // this.courrier.dateEnregistrement = today; 
+    window.location.reload(); 
   }
   
 }
