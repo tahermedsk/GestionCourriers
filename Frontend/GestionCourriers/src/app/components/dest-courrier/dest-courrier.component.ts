@@ -10,17 +10,21 @@ export class DestCourrierComponent implements OnInit {
 
   currentStep: string = "Enregistrement";
   courrier: Courrier = new Courrier();
+  numeroCourrier: number = 1; 
 
   constructor() { }
 
   ngOnInit(): void {
+    this.genererNumeroCourrier(); 
+  }
+
+  genererNumeroCourrier(): void {
+    this.courrier.id = this.numeroCourrier;
   }
 
   nouveauCourrier(): void {
-    // this.courrier = new Courrier(); 
-    // const today = new Date(); 
-    // this.courrier.dateEnregistrement = today; 
-    window.location.reload(); 
+    this.numeroCourrier++;
+    this.genererNumeroCourrier();
+    window.location.reload();
   }
-  
 }

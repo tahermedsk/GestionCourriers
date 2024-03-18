@@ -19,9 +19,12 @@
         type="text"
         class="form-control shadow"
         id="numero"
+        [value]="courrier.id"
         placeholder="Numéro"
+        readonly
       />
     </div>
+    
     <div class="col-md-3">
       <label for="date" class="form-label ">Date</label>
       <input type="date" class="form-control  shadow" id="date" />

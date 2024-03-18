@@ -3,7 +3,7 @@ import { ModeTransmission } from "./mode-transmission";
 
 export class Courrier {
     id?: number;
-  numero?: number;
+  // numero?: number;
   dateEnregistrement?: Date;
   refCourrier?: number;
   codeBarre?: string;
