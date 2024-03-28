@@ -19,6 +19,7 @@ export class VentilationDestComponent {
   constructor(private lectureVentilationService: LectureVentilationService,private directionService : DirectionService) { }
 
   enregistrerLectureVentilation(): void {
+    console.log(this.lectureVentilation.degreUrgence);
     this.lectureVentilationService.createLectureVentilation(this.lectureVentilation)
       .subscribe(
         (response) => {

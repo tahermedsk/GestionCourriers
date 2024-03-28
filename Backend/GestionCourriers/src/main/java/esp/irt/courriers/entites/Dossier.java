@@ -14,8 +14,8 @@ public class Dossier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long code;
-    private String libelle;
+    private String code;
+    
 
     // Default (no-argument) constructor
     public Dossier() {
