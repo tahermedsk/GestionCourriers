@@ -70,7 +70,16 @@
         <div class="row">
           <div class="form-group">
             <label for="numeroDossier">Nº Dossier - رقم الملف</label>
-            <input type="text" class="form-control shadow" id="numeroDossier" placeholder="Entrez le numéro du dossier" [(ngModel)]="transmissionCourrier.dossier" name="numeroDossier">
+            <select
+              class="form-select shadow"
+              id="dossier"
+              [(ngModel)]="transmissionCourrier.dossier"
+              name = "direction"
+            >
+              <option *ngFor="let dossier of dossiers" [value]="dossier.id">
+                {{ dossier.code }}
+              </option>
+            </select>
           </div>
         </div>
         <div class="row">

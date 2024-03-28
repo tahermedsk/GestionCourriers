@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 import { Direction } from "src/app/models/direction";
+import { Dossier } from "src/app/models/dossier";
 import { TransmissionCourrier } from "src/app/models/transmission-courrier";
 import { DirectionService } from "src/app/services/direction.service";
+import { DossierService } from "src/app/services/dossier.service";
 import { TransmissionCourrierService } from "src/app/services/transmission-courrier.service";
 
 @Component({
@@ -17,14 +19,33 @@ export class EnregistrementSendComponent {
   directions?: Direction[];
   amplitinos?: Direction[];
   selectedAmpliations: Direction[] = []; // Store selected ampliations here
+  dossiers ?: Dossier[];
 
   constructor(
     private transmissionCourrierService: TransmissionCourrierService,
-    private directionService: DirectionService
+    private directionService: DirectionService,
+    private dossierService: DossierService
   ) {}
 
   enregistrerTransmissionCourrier(): void {
     // Assign selected ampliations to transmissionCourrier
+    const selectedDossier = this.dossiers?.find(dossier => dossier.code?.toString == this.transmissionCourrier.dossier);
+  
+    // Check if a dossier is found
+    if (selectedDossier) {
+      console.log(selectedDossier);
+      
+      console.log("ok");
+    }
+    else{
+      var a = this.transmissionCourrier.dossier;
+      // this.transmissionCourrier.dossier = {code:""}
+    }
+    this.transmissionCourrier.dossier = selectedDossier;
+    // Log the selected dossier's code if available
+    console.log("dsss :" + (selectedDossier ? selectedDossier.code : ""));
+    
+    console.log(this.transmissionCourrier.dossier)
     this.transmissionCourrier.ampliations = this.selectedAmpliations;
     console.log(this.selectedAmpliations);
     this.transmissionCourrierService
@@ -48,6 +69,16 @@ export class EnregistrementSendComponent {
       },
       (error) => {
         console.error("Error fetching direction:", error);
+      }
+    );
+
+    this.dossierService.getAllDossiers().subscribe(
+      (data) => {
+        this.dossiers = data;
+        console.log(this.dossiers);
+      },
+      (error) => {
+        console.error('Error fetching dossier:', error);
       }
     );
   }
