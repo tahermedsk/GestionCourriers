@@ -13,12 +13,22 @@
             </div>
           </div>
           <div class="col-md-6">
-            <label for="Ampliations" class="form-label">Ampliations</label>
-            <select class="form-select shadow" id="Ampliations" [(ngModel)]="transmissionCourrier.ampliations" name="ampliations">
-              <option value="Mail">A</option>
-              <option value="Fax">B</option>
-            </select>
-          </div>
+            <div>
+              <label for="Ampliations" class="form-label">Ampliations</label>
+              <select class="form-select shadow" id="Ampliations" [(ngModel)]="transmissionCourrier.ampliations" name="ampliations" multiple>
+                <option *ngFor="let direction of amplitinos" [ngValue]="direction" (click)="toggleAmpliationSelection(direction)">
+                  {{ direction.libelle }}
+                </option>
+              </select>            
+            </div>
+            
+            <div>
+              <label for="selectedAmpliations" class="form-label">Selected Ampliations:</label>
+              <ul>
+                <li *ngFor="let ampliation of selectedAmpliations">{{ ampliation.libelle }}</li>
+              </ul>
+            </div>
+</div>            
         </div>
         <div class="row">
           <div class="col-md-6">

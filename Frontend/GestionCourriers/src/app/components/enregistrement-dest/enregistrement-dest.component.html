@@ -110,7 +110,7 @@
               [(ngModel)]="receptionCourrier.dossier"
             >
               <option *ngFor="let dossier of dossiers" [value]="dossier.id">
-                {{ dossier.libelle }}
+                {{ dossier.code }}
               </option>
             </select>
           </div>

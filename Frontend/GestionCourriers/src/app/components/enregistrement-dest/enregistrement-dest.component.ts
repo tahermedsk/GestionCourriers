@@ -60,17 +60,22 @@ export class EnregistrementDestComponent implements OnInit {
 
   enregistrerReceptionCourrier(): void {
     // Find the selected dossier from the array based on its ID
-    const selectedDossier = this.dossiers?.find(dossier => dossier.id == this.receptionCourrier.dossier);
+    const selectedDossier = this.dossiers?.find(dossier => dossier.code?.toString == this.receptionCourrier.dossier);
   
     // Check if a dossier is found
     if (selectedDossier) {
       console.log(selectedDossier);
+      
       console.log("ok");
     }
-  
+    else{
+      var a = this.receptionCourrier.dossier;
+      // this.receptionCourrier.dossier = {code:""}
+    }
+    this.receptionCourrier.dossier = selectedDossier;
     // Log the selected dossier's code if available
     console.log("dsss :" + (selectedDossier ? selectedDossier.code : ""));
-    this.receptionCourrier.dossier = selectedDossier;
+    
     console.log(this.receptionCourrier.dossier)
     // Call the service method to create the reception courrier
     this.receptionCourrierService.createReceptionCourrier(this.receptionCourrier)

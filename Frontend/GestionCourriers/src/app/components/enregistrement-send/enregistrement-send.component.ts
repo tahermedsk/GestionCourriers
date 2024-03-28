@@ -12,14 +12,21 @@ import { TransmissionCourrierService } from "src/app/services/transmission-courr
 export class EnregistrementSendComponent {
   transmissionCourrier: TransmissionCourrier = new TransmissionCourrier();
   submitted = false;
-  code ?: number  ;
-  libelle ?: String ="";
-  directions ?: Direction[];
+  code?: number;
+  libelle?: string = "";
+  directions?: Direction[];
+  amplitinos?: Direction[];
+  selectedAmpliations: Direction[] = []; // Store selected ampliations here
+
   constructor(
-    private transmissionCourrierService: TransmissionCourrierService , private directionService : DirectionService
+    private transmissionCourrierService: TransmissionCourrierService,
+    private directionService: DirectionService
   ) {}
 
   enregistrerTransmissionCourrier(): void {
+    // Assign selected ampliations to transmissionCourrier
+    this.transmissionCourrier.ampliations = this.selectedAmpliations;
+    console.log(this.selectedAmpliations);
     this.transmissionCourrierService
       .createTransmissionCourrier(this.transmissionCourrier)
       .subscribe(
@@ -34,23 +41,36 @@ export class EnregistrementSendComponent {
   }
 
   ngOnInit(): void {
+    this.amplitinos = [{code:123,libelle:"Fax"},{code:24,libelle:"Mail"},{code:3,libelle:"other"}]
     this.directionService.getAllDirections().subscribe(
       (data) => {
-        this.directions =data;
-     
-},
+        this.directions = data;
+      },
       (error) => {
-        console.error('Error fetching direction:', error);
+        console.error("Error fetching direction:", error);
       }
     );
-    
   }
 
   onInputChange() {
-    this.directions?.forEach(element => {if(element.code==this.code){
-        this.libelle=element.libelle ;
+    this.directions?.forEach((element) => {
+      if (element.code == this.code) {
+        this.libelle = element.libelle?.toString(); // Convert to string
+      }
+    });
+  }
+  
+
+  // Method to handle selection/deselection of ampliations
+  toggleAmpliationSelection(direction: Direction) {
+    const index = this.selectedAmpliations.findIndex(selected => selected.code === direction.code);
+    if (index !== -1) {
+      // If already selected, remove it from the array
+      this.selectedAmpliations.splice(index, 1);
+    } else {
+      // If not selected, add it to the array
+      this.selectedAmpliations.push(direction);
     }
   }
-    )
-  }
+  
 }
