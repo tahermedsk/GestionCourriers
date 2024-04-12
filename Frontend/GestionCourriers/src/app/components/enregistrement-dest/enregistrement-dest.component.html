@@ -69,22 +69,15 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="piecesJointes">Pièces Jointes &nbsp;</label>
-              <input
-                type="file"
-                class="form-control-file shadow"
-                id="piecesJointes"
-                [(ngModel)]="receptionCourrier.piecesJointes"
-              />
+              
+              <app-joint-file   #jointFileA></app-joint-file>
+              
+              
             </div>
             <br />
             <div class="form-group">
               <label for="copieDoc">Copie du doc &nbsp;</label>
-              <input
-                type="file"
-                class="form-control-file shadow"
-                id="copieDoc"
-                [(ngModel)]="receptionCourrier.copieDoc"
-              />
+              <app-joint-file   #jointFileB></app-joint-file>
             </div>
           </div>
         </div>
@@ -109,7 +102,7 @@
               id="dossier"
               [(ngModel)]="receptionCourrier.dossier"
             >
-              <option *ngFor="let dossier of dossiers" [value]="dossier.id">
+              <option *ngFor="let dossier of dossiers" [value]="dossier">
                 {{ dossier.code }}
               </option>
             </select>

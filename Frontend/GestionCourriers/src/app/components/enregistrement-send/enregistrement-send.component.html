@@ -1,6 +1,5 @@
 <div *ngIf="!submitted">
     <div class="container">
-      <form (ngSubmit)="enregistrerTransmissionCourrier()" #transmissionForm="ngForm">
         <div class="row g-3">
           <div class="col-md-3">
             <label for="code" class="form-label">Code / الرمز</label>
@@ -58,12 +57,12 @@
             <br><br>
             <div class="form-group">
               <label for="piecesJointes">Pièces Jointes &nbsp;</label>
-              <input type="file" class="form-control-file shadow" id="piecesJointes" [(ngModel)]="transmissionCourrier.piecesJointes" name="piecesJointes">
+              <app-joint-file   #jointFileA></app-joint-file>
             </div>
             <br />
             <div class="form-group">
               <label for="copieDoc">Copie du doc &nbsp;</label>
-              <input type="file" class="form-control-file shadow" id="copieDoc" [(ngModel)]="transmissionCourrier.copieDoc" name="copieDoc">
+              <app-joint-file   #jointFileB></app-joint-file>
             </div>
           </div>
         </div>
@@ -76,7 +75,7 @@
               [(ngModel)]="transmissionCourrier.dossier"
               name = "direction"
             >
-              <option *ngFor="let dossier of dossiers" [value]="dossier.id">
+              <option *ngFor="let dossier of dossiers" [value]="dossier">
                 {{ dossier.code }}
               </option>
             </select>
@@ -94,9 +93,10 @@
         </div>
         <div class="col-12 text-center">
           <br>
-          <button type="submit" class="btn btn-success btn-lg">Enregistrer</button>
+          <button type="submit" class="btn btn-success btn-lg" (click)="enregistrerTransmissionCourrier()">Enregistrer</button>
         </div>
-      </form>
+        
+  
     </div>
   </div>
   <div *ngIf="submitted">
