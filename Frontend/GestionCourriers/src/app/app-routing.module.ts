@@ -7,10 +7,12 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { AuthGuard } from './services/auth.guard';
 import {GestionUserComponent} from "./components/gestion-user/gestion-user.component";
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
+import { JointFileComponent } from './components/joint-file/joint-file.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/login' , pathMatch: 'full' },
   {path:'login',component:LoginComponent},
+  {path:'test',component:JointFileComponent} ,
   {path:'list',component:ListCourrierComponent},
   {path:'dest',component:DestCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
   {path:'send',component:SendCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},

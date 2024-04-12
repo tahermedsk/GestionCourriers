@@ -1,0 +1,18 @@
+.file-input {
+    display: none;
+  }
+
+.upload{
+  border-radius:6px;
+  border-color: black;
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 2px;
+  box-shadow: 0 10px 4px rgba(0, 0, 0, 0.2);
+
+}
+.upload-btn {
+  border: 1px solid #ccc ;
+  border-radius: 4px;
+}

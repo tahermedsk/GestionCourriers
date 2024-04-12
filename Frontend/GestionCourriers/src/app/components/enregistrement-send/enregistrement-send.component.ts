@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Direction } from "src/app/models/direction";
 import { Dossier } from "src/app/models/dossier";
 import { TransmissionCourrier } from "src/app/models/transmission-courrier";
 import { DirectionService } from "src/app/services/direction.service";
 import { DossierService } from "src/app/services/dossier.service";
 import { TransmissionCourrierService } from "src/app/services/transmission-courrier.service";
+import { JointFileComponent } from "../joint-file/joint-file.component";
 
 @Component({
   selector: "app-enregistrement-send",
@@ -20,7 +21,9 @@ export class EnregistrementSendComponent {
   amplitinos?: Direction[];
   selectedAmpliations: Direction[] = []; // Store selected ampliations here
   dossiers ?: Dossier[];
-
+  @ViewChild('jointFileA') jointFileComponent1!: JointFileComponent;
+  @ViewChild('jointFileB') jointFileComponent2!: JointFileComponent;
+  
   constructor(
     private transmissionCourrierService: TransmissionCourrierService,
     private directionService: DirectionService,
@@ -29,8 +32,9 @@ export class EnregistrementSendComponent {
 
   enregistrerTransmissionCourrier(): void {
     // Assign selected ampliations to transmissionCourrier
-    const selectedDossier = this.dossiers?.find(dossier => dossier.code?.toString == this.transmissionCourrier.dossier);
-  
+    const selectedDossier = this.dossiers?.find(dossier => dossier == this.transmissionCourrier.dossier);
+    console.log("selected :"+selectedDossier)
+    console.log("jijiji")
     // Check if a dossier is found
     if (selectedDossier) {
       console.log(selectedDossier);
@@ -59,6 +63,7 @@ export class EnregistrementSendComponent {
           console.error(error);
         }
       );
+      this.uploadFile();
   }
 
   ngOnInit(): void {
@@ -104,4 +109,13 @@ export class EnregistrementSendComponent {
     }
   }
   
+  uploadFile() {
+    this.jointFileComponent1.reference=this.transmissionCourrier.refCourrier
+    this.jointFileComponent2.reference=this.transmissionCourrier.refCourrier
+    this.jointFileComponent1.dossier=this.transmissionCourrier.dossier?.code
+    this.jointFileComponent2.dossier=this.transmissionCourrier.dossier?.code
+    // Call triggerUpload function of JointFileComponent
+    this.jointFileComponent1.triggerUpload();
+    this.jointFileComponent2.triggerUpload();
+  }
 }

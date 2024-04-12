@@ -17,6 +17,8 @@ import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.com
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
 import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 //si vous rencontrez une erreur dans le package suivant
 //vous devez maitre  'ng add angular-datatables'
@@ -26,6 +28,8 @@ import { ListCourrierComponent } from './components/list-courrier/list-courrier.
 import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
 import { ListCourrierArriveComponent } from './components/list-courrier-arrive/list-courrier-arrive.component';
 import { DataTablesModule } from 'angular-datatables';
+import { JointFileComponent } from './components/joint-file/joint-file.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -45,7 +49,8 @@ import { DataTablesModule } from 'angular-datatables';
     GestionUserComponent,
     ListCourrierComponent,
     ListCourrierDepartComponent,
-    ListCourrierArriveComponent
+    ListCourrierArriveComponent,
+    JointFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,15 +59,16 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    
-
+    MatIconModule,
+    MatProgressBarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
           return localStorage.getItem('access_token');
         }
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
