@@ -70,15 +70,16 @@
           <div class="form-group">
             <label for="numeroDossier">Nº Dossier - رقم الملف</label>
             <select
-              class="form-select shadow"
-              id="dossier"
-              [(ngModel)]="transmissionCourrier.dossier"
-              name = "direction"
-            >
-              <option *ngFor="let dossier of dossiers" [value]="dossier">
-                {{ dossier.code }}
-              </option>
-            </select>
+  class="form-select shadow"
+  id="dossier"
+  [(ngModel)]="transmissionCourrier.dossier"
+  name="direction"
+>
+  <option *ngFor="let dossier of dossiers" [ngValue]="dossier.id">
+    {{ dossier.code }}
+  </option>
+</select>
+
           </div>
         </div>
         <div class="row">

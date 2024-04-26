@@ -23,7 +23,7 @@ export class EnregistrementSendComponent {
   dossiers ?: Dossier[];
   @ViewChild('jointFileA') jointFileComponent1!: JointFileComponent;
   @ViewChild('jointFileB') jointFileComponent2!: JointFileComponent;
-  
+  selectedDossier ?:Dossier;
   constructor(
     private transmissionCourrierService: TransmissionCourrierService,
     private directionService: DirectionService,
@@ -32,22 +32,24 @@ export class EnregistrementSendComponent {
 
   enregistrerTransmissionCourrier(): void {
     // Assign selected ampliations to transmissionCourrier
-    const selectedDossier = this.dossiers?.find(dossier => dossier == this.transmissionCourrier.dossier);
-    console.log("selected :"+selectedDossier)
-    console.log("jijiji")
+    this.selectedDossier = this.dossiers?.find(dossier => dossier.id === this.transmissionCourrier.dossier);
+
     // Check if a dossier is found
-    if (selectedDossier) {
-      console.log(selectedDossier);
-      
-      console.log("ok");
+    if (this.selectedDossier) {
+      // Assign the selected dossier to transmissionCourrier
+      this.transmissionCourrier.dossier = this.selectedDossier;
+      console.log("Selected Dossier:", this.selectedDossier);
+    } else {
+      // Handle the case when no dossier is found
+      console.log("No dossier selected");
     }
-    else{
-      var a = this.transmissionCourrier.dossier;
-      // this.transmissionCourrier.dossier = {code:""}
-    }
-    this.transmissionCourrier.dossier = selectedDossier;
+    console.log("nice one",this.transmissionCourrier.dossier?.code);
+    this.selectedDossier = this.dossiers?.find(dossier => dossier == this.transmissionCourrier.dossier);
+    console.log("selected :"+this.selectedDossier)
+    
+    this.transmissionCourrier.dossier = this.selectedDossier;
     // Log the selected dossier's code if available
-    console.log("dsss :" + (selectedDossier ? selectedDossier.code : ""));
+    console.log("dsss :" + (this.selectedDossier ? this.selectedDossier.code : ""));
     
     console.log(this.transmissionCourrier.dossier)
     this.transmissionCourrier.ampliations = this.selectedAmpliations;
@@ -68,12 +70,14 @@ export class EnregistrementSendComponent {
 
   ngOnInit(): void {
     this.amplitinos = [{code:123,libelle:"Fax"},{code:24,libelle:"Mail"},{code:3,libelle:"other"}]
+    console.log(this.jointFileComponent1)
+    console.log(this.jointFileComponent2)
     this.directionService.getAllDirections().subscribe(
       (data) => {
         this.directions = data;
       },
       (error) => {
-        console.error("Error fetching direction:", error);
+        console.error("Error fetchinUpload(g direction:", error);
       }
     );
 
@@ -89,6 +93,8 @@ export class EnregistrementSendComponent {
   }
 
   onInputChange() {
+    console.log(this.jointFileComponent1)
+    console.log(this.jointFileComponent2)
     this.directions?.forEach((element) => {
       if (element.code == this.code) {
         this.libelle = element.libelle?.toString(); // Convert to string
@@ -110,6 +116,7 @@ export class EnregistrementSendComponent {
   }
   
   uploadFile() {
+    console.log("ooooooooooo",this.selectedDossier);
     this.jointFileComponent1.reference=this.transmissionCourrier.refCourrier
     this.jointFileComponent2.reference=this.transmissionCourrier.refCourrier
     this.jointFileComponent1.dossier=this.transmissionCourrier.dossier?.code

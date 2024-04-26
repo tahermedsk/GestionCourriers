@@ -23,6 +23,7 @@ export class UploadFileService {
   }
 
   upload(formData: FormData): Observable<any> {
+    console.log(formData);
     return this.http.post(environment.serverURL + '/api/thumbnail-upload', formData, { 
       headers: this.getHeaders()
     });
