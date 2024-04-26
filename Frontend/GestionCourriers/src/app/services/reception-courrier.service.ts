@@ -27,7 +27,7 @@ export class ReceptionCourrierService {
 
   getAllReceptionCourriers(): Observable<ReceptionCourrier[]> {
     const headers = this.getHeaders();
-    return this.http.get<ReceptionCourrier[]>(this.url, { headers, withCredentials: true });
+    return this.http.get<ReceptionCourrier[]>(this.url, { headers });
   }
 
   getReceptionCourrierById(id: number): Observable<ReceptionCourrier> {

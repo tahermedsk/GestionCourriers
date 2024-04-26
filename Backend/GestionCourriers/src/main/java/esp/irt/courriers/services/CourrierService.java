@@ -46,4 +46,8 @@ public class CourrierService {
     public Courrier getCourrierByRef(Long refCourrier) {
         return courrierRepository.findByRefCourrier(refCourrier);
     }
+
+    public long countCourriers() {
+        return courrierRepository.count();
+    }
 }
