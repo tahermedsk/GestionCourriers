@@ -21,7 +21,7 @@ import { GestionUserComponent } from './components/gestion-user/gestion-user.com
 
 //si vous rencontrez une erreur dans le package suivant
 //vous devez maitre  'ng add angular-datatables'
-import {DataTablesModule} from 'angular-datatables';
+import { DataTablesModule } from 'angular-datatables'; 
 
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
 import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
@@ -52,8 +52,8 @@ import { ListCourrierArriveComponent } from './components/list-courrier-arrive/l
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     DataTablesModule,
+    HttpClientModule,
     
 
     JwtModule.forRoot({
