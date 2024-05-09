@@ -15,7 +15,7 @@
     <div class="col-md-2">
       <button style="background-color: LightGreen;" class="btn btn w-100 shadow">Nouveau</button>
     </div>
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
       <label for="numero" class="form-label">N°</label>
       <input 
         type="text"
@@ -23,7 +23,20 @@
         id="numero"
         placeholder="Numéro"
       />
-    </div>
+    </div> -->
+
+    <div class="col-md-3">
+      <label for="numero" class="form-label">N°</label>
+      <input 
+        type="text"
+        class="form-control shadow"
+        id="numero"
+        placeholder="Numéro"
+        readonly
+        [value]="numeroCourrier"
+      />
+    </div>    
+
     <div class="col-md-3">
       <label for="date" class="form-label">Date</label>
       <input type="date" class="form-control shadow" id="date" />

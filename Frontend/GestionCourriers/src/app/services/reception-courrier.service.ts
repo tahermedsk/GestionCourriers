@@ -27,7 +27,7 @@ export class ReceptionCourrierService {
 
   getAllReceptionCourriers(): Observable<ReceptionCourrier[]> {
     const headers = this.getHeaders();
-    return this.http.get<ReceptionCourrier[]>(this.url, { headers, withCredentials: true });
+    return this.http.get<ReceptionCourrier[]>(this.url, { headers });
   }
 
   getReceptionCourrierById(id: number): Observable<ReceptionCourrier> {
@@ -40,7 +40,7 @@ export class ReceptionCourrierService {
     const jwtToken = localStorage.getItem('access_token');
     console.log('JWT Token:', jwtToken);
     
-
+    console.log(receptionCourrier);
     return this.http.post<ReceptionCourrier>(this.url, receptionCourrier, { headers:{'Content-Type':'application/json','Authorization':`Bearer ${jwtToken}`,'Access-Control-Allow-Origin':'*'}});
   }
 

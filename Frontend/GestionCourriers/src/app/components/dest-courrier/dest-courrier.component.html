@@ -2,16 +2,16 @@
   <br />
   <div class="d-flex justify-content-center">
     <div class="text-center">
-      
       <h1  style="color: #59946d; font-family: Times New Roman;">
-        COURRIER<span style="color: #50d8af;">ARRIVEE </span></h1>
+        COURRIER<span style="color: #50d8af;">ARRIVEE </span>
+      </h1>
       <h4>{{ currentStep }}</h4>
     </div>
   </div>
   <hr />
   <form class="row g-3 align-items-end">
     <div class="col-md-2">
-      <button style="background-color: LightGreen;" class="btn btn-info w-100 shadow">Nouveau</button>
+      <button style="background-color: LightGreen;" class="btn btn-info w-100 shadow" (click)="nouveauCourrier()">Nouveau</button>
     </div>
     <div class="col-md-3">
       <label for="numero" class="form-label">N°</label>
@@ -20,8 +20,11 @@
         class="form-control shadow"
         id="numero"
         placeholder="Numéro"
+        readonly
+        [value]="numeroCourrier"
       />
-    </div>
+    </div>    
+    
     <div class="col-md-3">
       <label for="date" class="form-label ">Date</label>
       <input type="date" class="form-control  shadow" id="date" />

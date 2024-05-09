@@ -8,7 +8,7 @@ import { AuthService } from './auth.service'; // Assuming you have AuthService f
   providedIn: 'root'
 })
 export class LectureVentilationService {
-  private url = 'http://localhost:8080/lecture-ventilations';
+  private url = 'http://localhost:8080/lectureventilations';
 
   constructor(
     private http: HttpClient,

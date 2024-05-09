@@ -25,7 +25,7 @@ public class Courrier {
     private ModeTransmission modeTransmission;
     private Date dateReception;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "dossier_id") // Nom de la colonne pour la relation avec le dossier
     private Dossier dossier;
     

@@ -63,4 +63,10 @@ public class CourrierController {
         Courrier courrier = courrierService.getCourrierByRef(refCourrier);
         return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countCourriers() {
+        long count = courrierService.countCourriers();
+        return ResponseEntity.ok(count);
+    }
 }

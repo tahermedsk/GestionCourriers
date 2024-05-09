@@ -1,130 +1,151 @@
-<div class="container ">
-  <div class="row g-3">
-    <div class="col-md-3">
-      <label for="code" class="form-label ">Code / الرمز</label>
-      <input
-        type="text"
-        class="form-control shadow"
-        id="code"
-        placeholder="Code du document"
-        [(ngModel)]="receptionCourrier.codeBarre"
-      />
-    </div>
-    <div class="col-md-3">
-      <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
-      <select class="form-select shadow" id="expediteur" [(ngModel)]="receptionCourrier.expediteur">
-        <option value="Mail">A</option>
-        <option value="Fax">B</option>
-        
-      </select>
-      
-    </div>
-    <div class="col-md-6">
-      <label for="mode_envoi" class="form-label ">Mode de transmission / طريقة الإرسال</label>
-      <select class="form-select shadow" id="mode_envoi" [(ngModel)]="receptionCourrier.modeTransmission">
-        <option value="Mail">Mail</option>
-        <option value="Fax">Fax</option>
-        <option value="Cahier de transmission">Cahier de transmission</option>
-        <option value="Accusé de réception">Accusé de réception</option>
-        <option value="Mains propres">Mains propres</option>
-      </select>
-    </div>
-  </div>
-  <br />
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form row g-2">
-        <label for="refCourrier" class="col-sm-3"><b>Réf du courrier</b></label>
-        <div class="form-group shadow col-sm-9">
-          <div class="row">
-            <div class="col">
-              <label for="numero">N° / الرقم</label>
-              <input
-                type="number"
-                class="form-control"
-                id="numero"
-                placeholder="numéro courrier"
-                [(ngModel)]="receptionCourrier.refCourrier"
-              />
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="container">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label for="code" class="form-label">Code / الرمز</label>
+            <input
+              type="text"
+              class="form-control shadow"
+              id="code"
+              placeholder="Code du document"
+              [(ngModel)]="receptionCourrier.codeBarre"
+              (input)="onInputChange()"
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
+            <div class="rectangle">
+              <p>Expediteur: {{ libelle }}</p>
             </div>
-            <div class="col">
-              <label for="date">Date / التاريخ</label>
-              <input  type="date" class="form-control shadow" id="date" [(ngModel)]="receptionCourrier.dateReception"/>
+          </div>
+          <div class="col-md-6">
+            <label for="mode_envoi" class="form-label">Mode de transmission / طريقة الإرسال</label>
+            <select
+              class="form-select shadow"
+              id="mode_envoi"
+              [(ngModel)]="receptionCourrier.modeTransmission"
+            >
+              <option value="Mail">Mail</option>
+              <option value="Fax">Fax</option>
+              <option value="Cahier de transmission">Cahier de transmission</option>
+              <option value="Accusé de réception">Accusé de réception</option>
+              <option value="Mains propres">Mains propres</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-row g-2">
+              <label for="refCourrier" class="col-sm-3"><b>Réf du courrier</b></label>
+              <div class="form-group shadow col-sm-9">
+                <div class="row">
+                  <div class="col">
+                    <label for="numero">N° / الرقم</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="numero"
+                      placeholder="numéro courrier"
+                      [(ngModel)]="receptionCourrier.refCourrier"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="date">Date / التاريخ</label>
+                    <input
+                      type="date"
+                      class="form-control shadow"
+                      id="date"
+                      [(ngModel)]="receptionCourrier.dateReception"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="piecesJointes">Pièces Jointes &nbsp;</label>
+              
+              <app-joint-file   #jointFileA></app-joint-file>
+              
+              
+            </div>
+            <br />
+            <div class="form-group">
+              <label for="copieDoc">Copie du doc &nbsp;</label>
+              <app-joint-file   #jointFileB></app-joint-file>
             </div>
           </div>
         </div>
-      </div>
-      <br />
 
-     
-      
-      
+        <br />
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="codeBarre">Code Barre</label>
+            <input
+              type="text"
+              class="form-control shadow"
+              id="codeBarre"
+              placeholder="Entrez le code barre"
+              [(ngModel)]="receptionCourrier.codeBarre"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="dossier">Dossier / الملف</label>
+            <select
+              class="form-select shadow"
+              id="dossier"
+              [(ngModel)]="receptionCourrier.dossier"
+            >
+              <option *ngFor="let dossier of dossiers" [value]="dossier">
+                {{ dossier.code }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="objet">Objet / الموضوع</label>
+            <textarea
+              class="form-control shadow"
+              id="objet"
+              rows="5"
+              [(ngModel)]="receptionCourrier.objet"
+            ></textarea>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="observations">Observations / الملاحظات</label>
+            <textarea
+              class="form-control shadow"
+              id="observations"
+              rows="5"
+              [(ngModel)]="receptionCourrier.observation"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <br />
+            <button
+              type="submit"
+              class="btn btn-success btn-lg"
+              (click)="enregistrerReceptionCourrier()"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      
-      <div class="form-group">
-        <label for="piecesJointes">Pièces Jointes &nbsp;</label>
-        <input type="file" class="form-control-file shadow" id="piecesJointes" [(ngModel)]="receptionCourrier.piecesJointes" />
-      </div>
-      <br />
-      <div class="form-group">
-        <label for="copieDoc">Copie du doc &nbsp;</label>
-        <input type="file" class="form-control-file shadow" id="copieDoc" [(ngModel)]="receptionCourrier.copieDoc" />
-      </div>
+    <div *ngIf="submitted">
+      <h4>le Courrier arrivé a été enregistré avec succès...</h4>
     </div>
   </div>
-
-
-
-<br>
-
-
-<div  class="row">
-  <div class="form-group">
-    <label for="codeBarre">Code Barre</label>
-    <input
-      type="text"
-      class="form-control shadow"
-      id="codeBarre"
-      placeholder="Entrez le code barre"
-      [(ngModel)]="receptionCourrier.codeBarre"
-    /><br>
-  </div>
-  <div class="form-group">
-    <label for="numeroDossier">Nº Dossier - رقم الملف</label>
-    <input 
-      type="text"
-      class="form-control shadow"
-      id="numeroDossier"
-      placeholder="Entrez le numéro du dossier"
-      [(ngModel)]="receptionCourrier.dossier"
-    /><br>
-  </div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-  <div class="row">
-  <div class="form-group">
-    <label for="objet">Objet / الموضوع</label>
-    <textarea   class="form-control shadow" id="objet" rows="5" [(ngModel)]="receptionCourrier.objet"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="observations">Observations / الملاحظات</label>
-    <textarea  class="form-control shadow" id="observations" rows="5" [(ngModel)]="receptionCourrier.observation"></textarea>
-  </div>
-  <br>
-  <div class="col-18 text-center"><br>
-    <button type="submit" class="btn btn-success btn-lg" (click)="enregistrerReceptionCourrier()">Enregistrer</button>
-  </div>
-</div>
 </div>

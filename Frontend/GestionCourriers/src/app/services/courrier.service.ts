@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Courrier } from '../models/courrier';
-import { AuthService } from './auth.service'; // Assuming you have AuthService for obtaining JWT token
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,13 @@ export class CourrierService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService // Assuming you have AuthService for obtaining JWT token
+    private authService: AuthService
   ) { }
 
   private getHeaders(): HttpHeaders {
     const jwtToken = localStorage.getItem('access_token');
     console.log('JWT Token:', jwtToken);
 
-    // Create HttpHeaders using the set method
     return new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Authorization', `Bearer ${jwtToken}`);
@@ -48,5 +47,10 @@ export class CourrierService {
   deleteCourrier(id: number): Observable<void> {
     const headers = this.getHeaders();
     return this.http.delete<void>(`${this.url}/${id}`, { headers });
+  }
+
+  getNombreCourriers(): Observable<number> {
+    const headers = this.getHeaders();
+    return this.http.get<number>(`${this.url}/count`, { headers });
   }
 }

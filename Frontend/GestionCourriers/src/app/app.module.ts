@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,14 +17,23 @@ import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.com
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
 import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 //si vous rencontrez une erreur dans le package suivant
 //vous devez maitre  'ng add angular-datatables'
+<<<<<<< HEAD
 import { DataTablesModule } from 'angular-datatables'; 
+=======
+//import {DataTablesModule} from 'angular-datatables';
+>>>>>>> dc8f779867ac454748c509c38243c860c9c19efc
 
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
 import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
 import { ListCourrierArriveComponent } from './components/list-courrier-arrive/list-courrier-arrive.component';
+import { DataTablesModule } from 'angular-datatables';
+import { JointFileComponent } from './components/joint-file/joint-file.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -45,7 +53,8 @@ import { ListCourrierArriveComponent } from './components/list-courrier-arrive/l
     GestionUserComponent,
     ListCourrierComponent,
     ListCourrierDepartComponent,
-    ListCourrierArriveComponent
+    ListCourrierArriveComponent,
+    JointFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,16 +62,22 @@ import { ListCourrierArriveComponent } from './components/list-courrier-arrive/l
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
+<<<<<<< HEAD
     HttpClientModule,
     
 
+=======
+    MatIconModule,
+    MatProgressBarModule,
+>>>>>>> dc8f779867ac454748c509c38243c860c9c19efc
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
           return localStorage.getItem('access_token');
         }
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
