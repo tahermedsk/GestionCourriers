@@ -1,0 +1,29 @@
+/* Animation pour l'icône de validation */
+.animate {
+    animation: checkAnimation 0.5s ease-out forwards;
+}
+
+@keyframes checkAnimation {
+    0% {
+        transform: scale(0, 1);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/* Style supplémentaire */
+.box {
+    margin-bottom: 20px;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.bi {
+    font-size: 200px; /* Ajustez la taille de l'icône selon vos besoins */
+    color: #28a745; /* Couleur de l'icône */
+    justify-content: center;
+}
