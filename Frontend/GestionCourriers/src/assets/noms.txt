@@ -1,0 +1,3 @@
+
+ministere = Ministère de la Transformation Numérique, de l'Innovation et de la Modernisation de l'Administration
+nomarab = وزارة التحول الرقمي و الإبتكار وعصرنة الإدارة  

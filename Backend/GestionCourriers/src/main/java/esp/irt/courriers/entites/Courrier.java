@@ -28,7 +28,6 @@ public class Courrier {
 
     @ManyToOne
     @JoinColumn(name = "dossier_id") // Nom de la colonne pour la relation avec le dossier
->>>>>>> d0ffc546123c5c884f9398df3ab99f972e7e95b1
     private Dossier dossier;
 
     public Courrier(){}
