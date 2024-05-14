@@ -15,24 +15,16 @@ export class ReceptionCourrierService {
     private authService: AuthService
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const jwtToken = localStorage.getItem('access_token');
-    console.log('JWT Token:', jwtToken);
 
-    // Create HttpHeaders using the set method
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${jwtToken}`);
-  }
 
   getAllReceptionCourriers(): Observable<ReceptionCourrier[]> {
-    const headers = this.getHeaders();
-    return this.http.get<ReceptionCourrier[]>(this.url, { headers });
+
+    return this.http.get<ReceptionCourrier[]>(this.url);
   }
 
   getReceptionCourrierById(id: number): Observable<ReceptionCourrier> {
-    const headers = this.getHeaders();
-    return this.http.get<ReceptionCourrier>(`${this.url}/${id}`, { headers, withCredentials: true });
+
+    return this.http.get<ReceptionCourrier>(`${this.url}/${id}`);
   }
 
   createReceptionCourrier(receptionCourrier: ReceptionCourrier): Observable<ReceptionCourrier> {
@@ -45,12 +37,12 @@ export class ReceptionCourrierService {
   }
 
   updateReceptionCourrier(id: number, receptionCourrier: ReceptionCourrier): Observable<ReceptionCourrier> {
-    const headers = this.getHeaders();
-    return this.http.put<ReceptionCourrier>(`${this.url}/${id}`, receptionCourrier, { headers });
+
+    return this.http.put<ReceptionCourrier>(`${this.url}/${id}`, receptionCourrier);
   }
 
   deleteReceptionCourrier(id: number): Observable<void> {
-    const headers = this.getHeaders();
-    return this.http.delete<void>(`${this.url}/${id}`, { headers, withCredentials: true });
+
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }

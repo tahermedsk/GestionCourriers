@@ -15,38 +15,29 @@ export class DepartementService {
     private authService: AuthService // Assuming you have AuthService for obtaining JWT token
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const jwtToken = localStorage.getItem('access_token');
-    console.log('JWT Token:', jwtToken);
-
-    // Create HttpHeaders using the set method
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${jwtToken}`);
-  }
-
+ 
   getAllDepartements(): Observable<Departement[]> {
-    const headers = this.getHeaders();
-    return this.http.get<Departement[]>(this.url, { headers });
+
+    return this.http.get<Departement[]>(this.url);
   }
 
   getDepartementById(id: number): Observable<Departement> {
-    const headers = this.getHeaders();
-    return this.http.get<Departement>(`${this.url}/${id}`, { headers });
+
+    return this.http.get<Departement>(`${this.url}/${id}`);
   }
 
   createDepartement(departement: Departement): Observable<Departement> {
-    const headers = this.getHeaders();
-    return this.http.post<Departement>(this.url, departement, { headers });
+
+    return this.http.post<Departement>(this.url, departement);
   }
 
   updateDepartement(id: number, departement: Departement): Observable<Departement> {
-    const headers = this.getHeaders();
-    return this.http.put<Departement>(`${this.url}/${id}`, departement, { headers });
+
+    return this.http.put<Departement>(`${this.url}/${id}`, departement);
   }
 
   deleteDepartement(id: number): Observable<void> {
-    const headers = this.getHeaders();
-    return this.http.delete<void>(`${this.url}/${id}`, { headers });
+
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }
