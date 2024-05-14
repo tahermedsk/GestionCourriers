@@ -7,7 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DestCourrierComponent } from './components/dest-courrier/dest-courrier.component';
 import { SendCourrierComponent } from './components/send-courrier/send-courrier.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { EnregistrementDestComponent } from './components/enregistrement-dest/enregistrement-dest.component';
@@ -34,6 +34,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { JointFileComponent } from './components/joint-file/joint-file.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {JwtInterceptor} from './helpers/jwt.interceptor'
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
