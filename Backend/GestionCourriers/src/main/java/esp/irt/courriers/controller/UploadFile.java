@@ -1,7 +1,6 @@
 package esp.irt.courriers.controller;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

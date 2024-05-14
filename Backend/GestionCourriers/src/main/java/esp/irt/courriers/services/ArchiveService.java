@@ -42,20 +42,36 @@ public class ArchiveService {
     }
 
     public Archive uploadFile(MultipartFile file, Date date, String coteFinal, String observations) throws IOException {
-        File directory = new File(uploadDirectory);
+        // Concaténer le sous-dossier "Bordereau_de_versement" au chemin du répertoire de téléversement
+        String uploadDirectoryWithSubfolder = uploadDirectory;
+        
+        // Vérifier si le dossier "Bordereau_de_versement" existe, sinon le créer
+        File directory = new File(uploadDirectoryWithSubfolder);
         if (!directory.exists()) {
             directory.mkdirs();
         }
+
+        // Obtenir le nom d'origine du fichier
         String fileName = file.getOriginalFilename();
+        
+        // Générer un nom unique pour le fichier
         String storedFileName = System.currentTimeMillis() + "_" + fileName;
-        Path filePath = Paths.get(uploadDirectory + File.separator + storedFileName);
+
+        // Chemin du fichier dans le dossier "Bordereau_de_versement"
+        Path filePath = Paths.get(uploadDirectoryWithSubfolder + File.separator + storedFileName);
+
+        // Enregistrer le fichier dans le dossier "Bordereau_de_versement"
         Files.copy(file.getInputStream(), filePath);
+
+        // Créer l'objet Archive avec les détails
         Archive archive = new Archive();
         archive.setNomFichier(fileName);
         archive.setLienFichier(filePath.toString());
         archive.setDate_trans_dep_inter(date);
         archive.setCote_final(coteFinal);
         archive.setObservations(observations);
+
+        // Enregistrer l'archive dans la base de données
         return archiveRepository.save(archive);
     }
 }

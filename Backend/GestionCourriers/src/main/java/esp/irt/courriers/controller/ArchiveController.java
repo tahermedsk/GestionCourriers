@@ -1,4 +1,3 @@
-
 package esp.irt.courriers.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,8 @@ import esp.irt.courriers.entites.Archive;
 import esp.irt.courriers.services.ArchiveService;
 
 @RestController
-@RequestMapping("/api/archives")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/archives")
 public class ArchiveController {
 
     @Autowired
@@ -38,14 +38,13 @@ public class ArchiveController {
         archiveService.deleteArchive(id);
     }
 
-   
     @PostMapping("/upload")
-public Archive uploadFile(@RequestParam("file") MultipartFile file,
-                         @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
-                         @RequestParam("coteFinal") String coteFinal,
-                         @RequestParam("observations") String observations) throws IOException {
-    // Le reste du code ici
-    Archive archive = archiveService.uploadFile(file, date, coteFinal, observations);
-    return archive;
-}
+    public Archive uploadFile(@RequestParam("file") MultipartFile file,
+                              @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+                              @RequestParam("coteFinal") String coteFinal,
+                              @RequestParam("observations") String observations) throws IOException {
+        // Le reste du code ici
+        Archive archive = archiveService.uploadFile(file, date, coteFinal, observations);
+        return archive;
+    }
 }
