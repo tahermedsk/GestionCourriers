@@ -15,38 +15,29 @@ export class TransmissionCourrierService {
     private authService: AuthService // Assuming you have AuthService for obtaining JWT token
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const jwtToken = localStorage.getItem('access_token');
-    console.log('JWT Token:', jwtToken);
-
-    // Create HttpHeaders using the set method
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${jwtToken}`);
-  }
 
   getAllTransmissionCourriers(): Observable<TransmissionCourrier[]> {
-    const headers = this.getHeaders();
-    return this.http.get<TransmissionCourrier[]>(this.url, { headers });
+
+    return this.http.get<TransmissionCourrier[]>(this.url);
   }
 
   getTransmissionCourrierById(id: number): Observable<TransmissionCourrier> {
-    const headers = this.getHeaders();
-    return this.http.get<TransmissionCourrier>(`${this.url}/${id}`, { headers });
+
+    return this.http.get<TransmissionCourrier>(`${this.url}/${id}`);
   }
 
   createTransmissionCourrier(transmissionCourrier: TransmissionCourrier): Observable<TransmissionCourrier> {
-    const headers = this.getHeaders();
-    return this.http.post<TransmissionCourrier>(this.url, transmissionCourrier, { headers });
+
+    return this.http.post<TransmissionCourrier>(this.url, transmissionCourrier);
   }
 
   updateTransmissionCourrier(id: number, transmissionCourrier: TransmissionCourrier): Observable<TransmissionCourrier> {
-    const headers = this.getHeaders();
-    return this.http.put<TransmissionCourrier>(`${this.url}/${id}`, transmissionCourrier, { headers });
+
+    return this.http.put<TransmissionCourrier>(`${this.url}/${id}`, transmissionCourrier);
   }
 
   deleteTransmissionCourrier(id: number): Observable<void> {
-    const headers = this.getHeaders();
-    return this.http.delete<void>(`${this.url}/${id}`, { headers });
+
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }

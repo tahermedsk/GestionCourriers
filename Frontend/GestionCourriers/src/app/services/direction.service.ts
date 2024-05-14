@@ -15,38 +15,30 @@ export class DirectionService {
     private authService: AuthService // Assuming you have AuthService for obtaining JWT token
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const jwtToken = localStorage.getItem('access_token');
-    console.log('JWT Token:', jwtToken);
 
-    // Create HttpHeaders using the set method
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${jwtToken}`);
-  }
 
   getAllDirections(): Observable<Direction[]> {
-    const headers = this.getHeaders();
-    return this.http.get<Direction[]>(this.url, { headers });
+
+    return this.http.get<Direction[]>(this.url);
   }
 
   getDirectionById(id: number): Observable<Direction> {
-    const headers = this.getHeaders();
-    return this.http.get<Direction>(`${this.url}/${id}`, { headers });
+
+    return this.http.get<Direction>(`${this.url}/${id}`);
   }
 
   createDirection(direction: Direction): Observable<Direction> {
-    const headers = this.getHeaders();
-    return this.http.post<Direction>(this.url, direction, { headers });
+
+    return this.http.post<Direction>(this.url, direction);
   }
 
   updateDirection(id: number, direction: Direction): Observable<Direction> {
-    const headers = this.getHeaders();
-    return this.http.put<Direction>(`${this.url}/${id}`, direction, { headers });
+
+    return this.http.put<Direction>(`${this.url}/${id}`, direction);
   }
 
   deleteDirection(id: number): Observable<void> {
-    const headers = this.getHeaders();
-    return this.http.delete<void>(`${this.url}/${id}`, { headers });
+
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }

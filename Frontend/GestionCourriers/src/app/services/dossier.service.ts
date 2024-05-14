@@ -15,38 +15,30 @@ export class DossierService {
     private authService: AuthService // Assuming you have AuthService for obtaining JWT token
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const jwtToken = localStorage.getItem('access_token');
-    console.log('JWT Token:', jwtToken);
 
-    // Create HttpHeaders using the set method
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${jwtToken}`);
-  }
 
   getAllDossiers(): Observable<Dossier[]> {
-    const headers = this.getHeaders();
-    return this.http.get<Dossier[]>(this.url, { headers });
+
+    return this.http.get<Dossier[]>(this.url);
   }
 
   getDossierById(id: number): Observable<Dossier> {
-    const headers = this.getHeaders();
-    return this.http.get<Dossier>(`${this.url}/${id}`, { headers });
+
+    return this.http.get<Dossier>(`${this.url}/${id}`);
   }
 
   createDossier(dossier: Dossier): Observable<Dossier> {
-    const headers = this.getHeaders();
-    return this.http.post<Dossier>(this.url, dossier, { headers });
+
+    return this.http.post<Dossier>(this.url, dossier);
   }
 
   updateDossier(id: number, dossier: Dossier): Observable<Dossier> {
-    const headers = this.getHeaders();
-    return this.http.put<Dossier>(`${this.url}/${id}`, dossier, { headers });
+
+    return this.http.put<Dossier>(`${this.url}/${id}`, dossier);
   }
 
   deleteDossier(id: number): Observable<void> {
-    const headers = this.getHeaders();
-    return this.http.delete<void>(`${this.url}/${id}`, { headers });
+
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 }
