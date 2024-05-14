@@ -22,11 +22,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 //si vous rencontrez une erreur dans le package suivant
 //vous devez maitre  'ng add angular-datatables'
-<<<<<<< HEAD
-import { DataTablesModule } from 'angular-datatables'; 
-=======
+
+
 //import {DataTablesModule} from 'angular-datatables';
->>>>>>> dc8f779867ac454748c509c38243c860c9c19efc
+
 
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
 import { ListCourrierDepartComponent } from './components/list-courrier-depart/list-courrier-depart.component';
@@ -62,14 +61,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-<<<<<<< HEAD
+
     HttpClientModule,
     
 
-=======
+
     MatIconModule,
     MatProgressBarModule,
->>>>>>> dc8f779867ac454748c509c38243c860c9c19efc
+
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
