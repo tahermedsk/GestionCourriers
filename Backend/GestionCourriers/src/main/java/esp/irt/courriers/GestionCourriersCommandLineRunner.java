@@ -3,8 +3,9 @@ package esp.irt.courriers;
 import java.util.Collections;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -21,21 +22,20 @@ public class GestionCourriersCommandLineRunner implements CommandLineRunner{
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
     private ExcelDataService excelDataService;
-
-    @Autowired
-    public GestionCourriersCommandLineRunner(UserRepository userRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder,ExcelDataService excelDataService){
+    private Environment environment;
+    public GestionCourriersCommandLineRunner(UserRepository userRepository,RoleRepository roleRepository,Environment environment,PasswordEncoder passwordEncoder,ExcelDataService excelDataService){
         super();
         this.roleRepository=roleRepository;
         this.userRepository=userRepository;
         this.passwordEncoder=passwordEncoder;
         this.excelDataService=excelDataService;
+        this.environment=environment ;
     }
 
     @Override
     public void run(String... args) throws Exception {
         // TODO Auto-generated method stub
         if(userRepository.count()==0 && roleRepository.count()==0) {
-            excelDataService.importDataFromExcel("/home/mourad/JEE/organ13.xlsx");
             
                 Role role=new Role("ADMIN");
                 Role role2=new Role("USERBD");
@@ -50,9 +50,9 @@ public class GestionCourriersCommandLineRunner implements CommandLineRunner{
                 
                 UserEntity userEntity2=new UserEntity();
                 userEntity2.setUsername("admin");
-                userEntity2.setPassword(passwordEncoder.encode("1234"));
+                 userEntity2.setPassword(passwordEncoder.encode("1234"));
                 Optional<Role> roles = roleRepository.findById(1L);
-
+ 
 	        
 	        if(roles.isPresent()) {
 	        userEntity.setRoles(Collections.singletonList(roles.get()));
@@ -65,8 +65,8 @@ public class GestionCourriersCommandLineRunner implements CommandLineRunner{
 
         
     }
-
-
+    String uploadDir = environment.getProperty("./cabinet.xlsx") ;
+    excelDataService.importDataFromExcel("/home/taher/GestionCourriers/GestionCourriers/Backend/GestionCourriers/src/main/resources/cabinet.xlsx");
     
 }
 }
