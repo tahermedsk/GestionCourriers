@@ -35,6 +35,7 @@ public class GestionCourriersCommandLineRunner implements CommandLineRunner{
     public void run(String... args) throws Exception {
         // TODO Auto-generated method stub
         if(userRepository.count()==0 && roleRepository.count()==0) {
+            excelDataService.importDataFromExcel("/home/mourad/JEE/organ13.xlsx");
             
                 Role role=new Role("ADMIN");
                 Role role2=new Role("USERBD");
