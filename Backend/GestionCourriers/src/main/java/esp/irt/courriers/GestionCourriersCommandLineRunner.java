@@ -65,8 +65,9 @@ public class GestionCourriersCommandLineRunner implements CommandLineRunner{
 
         
     }
-    String uploadDir = environment.getProperty("./cabinet.xlsx") ;
-    excelDataService.importDataFromExcel("/home/taher/GestionCourriers/GestionCourriers/Backend/GestionCourriers/src/main/resources/cabinet.xlsx");
+    String uploadDir = environment.getProperty("cabinet.path") ;
+    System.out.println(uploadDir);
+    excelDataService.importDataFromExcel(uploadDir);
     
 }
 }
