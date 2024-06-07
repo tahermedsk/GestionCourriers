@@ -34,7 +34,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { JointFileComponent } from './components/joint-file/joint-file.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {JwtInterceptor} from './helpers/jwt.interceptor'
+import {JwtInterceptor} from './helpers/jwt.interceptor';
+import { StatiquesComponent } from './components/statiques/statiques.component'
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {JwtInterceptor} from './helpers/jwt.interceptor'
     ListCourrierDepartComponent,
     ListCourrierArriveComponent,
     JointFileComponent,
+    StatiquesComponent,
   ],
   imports: [
     BrowserModule,

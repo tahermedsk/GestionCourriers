@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import esp.irt.courriers.entites.Courrier;
+import esp.irt.courriers.entites.Status;
 import esp.irt.courriers.repository.CourrierRepository;
 
 import java.util.List;
@@ -49,5 +50,14 @@ public class CourrierService {
 
     public long countCourriers() {
         return courrierRepository.count();
+    }
+
+    public Courrier updateCourrierStatus(Long id) {
+        Courrier courrier = courrierRepository.findById(id).orElse(null);
+        if (courrier != null) {
+            courrier.setStatus(Status.ARCHIVE); // Mettre à jour le statut du courrier
+            return courrierRepository.save(courrier);
+        }
+        return null; // Gérer le cas où le courrier n'est pas trouvé
     }
 }

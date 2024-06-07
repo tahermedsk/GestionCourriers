@@ -1,31 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ArchiveService } from '../../services/archive.service';
+import { CourrierService } from '../../services/courrier.service'; // Importer le service CourrierService
+import { Courrier } from '../../models/courrier'; // Importer le modèle Courrier
 
 @Component({
   selector: 'app-archivage-dest',
   templateUrl: './archivage-dest.component.html',
   styleUrls: ['./archivage-dest.component.css'],
-  providers: [ArchiveService] 
+  providers: [ArchiveService]
 })
-export class ArchivageDestComponent  {
-
+export class ArchivageDestComponent implements OnInit {
+  selectedCourrier : Courrier| undefined;
   formData = {
     date: '',
     coteFinal: '',
     observations: '',
-    file: undefined // ou ''
+    file: undefined, // ou ''
+    
   };
-  
-  successMessageVisible = false; // Variable de contrôle pour afficher le message de succès
 
-  constructor(private http: HttpClient, private archiveService: ArchiveService) {}
+  successMessageVisible = false; // Variable de contrôle pour afficher le message de succès
+  courriers: Courrier[] = []; // Tableau pour stocker les courriers récupérés
+
+  constructor(
+    private http: HttpClient,
+    private archiveService: ArchiveService,
+    private courrierService: CourrierService // Injection du service CourrierService
+  ) {}
+
+  ngOnInit(): void {
+    this.getCourriers(); // Appel à la méthode pour récupérer les courriers
+  }
+
+  getCourriers(): void {
+    this.courrierService.getAllCourriers().subscribe(
+      (data: Courrier[]) => {
+        this.courriers = data; // Assigner les courriers récupérés au tableau local
+      },
+      error => {
+        console.error('Erreur lors de la récupération des courriers:', error);
+        // Gérer les erreurs de récupération des courriers
+      }
+    );
+  }
 
   onFileSelected(event: any) {
     this.formData.file = event.target.files[0];
   }
 
   onSubmit() {
+    this.archiveSelectedCourrier();
     const formData = new FormData();
     formData.append('date', this.formData.date);
     formData.append('coteFinal', this.formData.coteFinal);
@@ -49,5 +74,24 @@ export class ArchivageDestComponent  {
   onReturnToForm() {
     this.successMessageVisible = false;
     // Vous pouvez ajouter ici d'autres logiques si nécessaire
+  }
+
+  archiveSelectedCourrier(): void {
+    if (this.selectedCourrier) {
+      this.courrierService.archiveCourrier(this.selectedCourrier.id??0).subscribe(
+        (updatedCourrier: Courrier) => {
+          // Mettre à jour le statut du courrier dans la liste locale
+          const index = this.courriers.findIndex(c => c.id === updatedCourrier.id);
+          if (index !== -1) {
+            this.courriers[index] = updatedCourrier;
+          }
+          // Afficher un message ou gérer la réponse si nécessaire
+        },
+        error => {
+          console.error('Erreur lors de l\'archivage du courrier:', error);
+          // Gérer les erreurs d'archivage
+        }
+      );
+    }
   }
 }

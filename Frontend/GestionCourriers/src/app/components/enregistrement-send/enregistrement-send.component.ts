@@ -6,6 +6,7 @@ import { DirectionService } from "src/app/services/direction.service";
 import { DossierService } from "src/app/services/dossier.service";
 import { TransmissionCourrierService } from "src/app/services/transmission-courrier.service";
 import { JointFileComponent } from "../joint-file/joint-file.component";
+import { Status } from "src/app/models/courrier";
 
 @Component({
   selector: "app-enregistrement-send",
@@ -54,6 +55,7 @@ export class EnregistrementSendComponent {
     console.log(this.transmissionCourrier.dossier)
     this.transmissionCourrier.ampliations = this.selectedAmpliations;
     console.log(this.selectedAmpliations);
+    this.transmissionCourrier.status = Status.INSTANCE;
     this.transmissionCourrierService
       .createTransmissionCourrier(this.transmissionCourrier)
       .subscribe(

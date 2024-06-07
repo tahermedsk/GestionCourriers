@@ -86,7 +86,7 @@ box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);">
           <i class="bi bi-file-earmark-text-fill"></i> <b>Courrier départ</b> 
           </button>
           <div class="vertical-line mx-4"></div>
-          <button class="nav-link btn fs-4" href="#"><i class="bi bi-reception-4"></i><b> Statistiques </b></button>
+          <button class="nav-link btn fs-4" [routerLink]="['/statiques']"><i class="bi bi-reception-4"></i><b> Statistiques </b></button>
           <div class="vertical-line mx-4"></div>
           <button
             *ngIf="isLoginPage()"

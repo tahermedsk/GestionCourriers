@@ -1,17 +1,23 @@
 import { Dossier } from "./dossier";
 import { ModeTransmission } from "./mode-transmission";
 
+export enum Status {
+  ARCHIVE = 'ARCHIVE',
+  INSTANCE = 'INSTANCE'
+}
+
+
 export class Courrier {
     id?: number;
-  // numero?: number;
-  dateEnregistrement?: Date;
-  refCourrier?: number;
-  codeBarre?: string;
-  objet?: string;
-  observation?: string;
-  modeTransmission?: ModeTransmission;
-  dateReception?: Date;
-  dossier?: Dossier;
-  piecesJointes?: File;
-  copieDoc?: File;
+    dateEnregistrement?: Date;
+    refCourrier?: number;
+    codeBarre?: string;
+    objet?: string;
+    observation?: string;
+    modeTransmission?: ModeTransmission;
+    dateReception?: Date;
+    dossier?: Dossier;
+    piecesJointes?: File;
+    copieDoc?: File;
+    status?: Status; // Ajouter le champ status
 }
