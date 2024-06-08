@@ -20,6 +20,7 @@ export class ListCourrierArriveComponent implements OnInit {
     this.receptionCourrierService.getAllReceptionCourriers().subscribe(
       (data: ReceptionCourrier[]) => {
         this.courriers = data;
+        console.log(this.courriers)
       },
       (error: any) => {
         console.log(error);

@@ -1,5 +1,6 @@
 import { Dossier } from "./dossier";
 import { ModeTransmission } from "./mode-transmission";
+import {Time} from "@angular/common";
 
 export class Courrier {
     id?: number;

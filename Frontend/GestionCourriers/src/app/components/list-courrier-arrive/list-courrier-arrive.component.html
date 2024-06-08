@@ -1,6 +1,6 @@
-<div class="container">
+<div class="position-absolute">
     <h1>List Courriers Arrives</h1>
-    <table class="table">
+    <table class="table table-striped table-hover border-9">
       <thead>
         <tr>
           <th scope="col">Numero</th>
@@ -21,10 +21,10 @@
         <tr *ngFor="let courrier of courriers">
           <td>{{ courrier.id }}</td>
           <td>{{ courrier.codeBarre }}</td>
-          <td>{{ courrier.expediteur }}</td>
+          <td>{{ courrier.expediteur?.libelle }}</td>
           <td>{{ courrier.modeTransmission }}</td>
           <td>{{ courrier.refCourrier }}</td>
-          <td>{{ courrier.dateReception }}</td>
+          <td>{{ courrier.dateReception | date: 'yyyy-MM-dd' }}</td>
           <!-- <td>{{ courrier.dossier }}</td> -->
           <td>{{ courrier.codeBarre }}</td>
           <!-- <td>{{ courrier.piecesJointes }}</td> -->
