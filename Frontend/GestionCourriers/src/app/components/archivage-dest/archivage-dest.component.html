@@ -1,56 +1,68 @@
 <div class="container">
     <div *ngIf="!successMessageVisible">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h4>Transmission au depot intermediaire</h4>
-            </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <h4>Transmission au depot intermediaire</h4>
         </div>
-        <div class="row form-row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" class="form-control shadow" id="date" [(ngModel)]="formData.date">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="bordereau">Bordereau de versement</label>
-                    <input type="file" class="form-contro shadow" id="bordereau" (change)="onFileSelected($event)" accept="application/pdf">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="coteFinal">Cote finale</label>
-                    <textarea class="form-control shadow" id="coteFinal" rows="6" [(ngModel)]="formData.coteFinal"></textarea>
-                </div>
-            </div>
+      </div>
+      <div class="row form-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control shadow" id="date" [(ngModel)]="formData.date">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="bordereau">Bordereau de versement</label>
+            <input type="file" class="form-contro shadow" id="bordereau" (change)="onFileSelected($event)" accept="application/pdf">
+          </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="">
-                <div class="form-group border p-1">
-                    <h5>Observations</h5>
-                    <textarea class="form-control" id="observations" rows="3" [(ngModel)]="formData.observations"></textarea>
-                </div>
-            </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="coteFinal">Cote finale</label>
+            <textarea class="form-control shadow" id="coteFinal" rows="6" [(ngModel)]="formData.coteFinal"></textarea>
+          </div>
         </div>
-        <div class="row">
-            <div class="text-center">
-                <br>
-                <button type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">Terminé</button>
-            </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="">
+          <div class="form-group border p-1">
+            <h5>Observations</h5>
+            <textarea class="form-control" id="observations" rows="3" [(ngModel)]="formData.observations"></textarea>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="text-center">
+          <br>
+          <button type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">Terminé</button>
+        </div>
+      </div>
     </div>
+    <div *ngIf="courriers.length > 0" class="row mt-5">
+        <div class="col-md-12">
+          <h5>Sélectionnez un courrier :</h5>
+          <select class="form-control" [(ngModel)]="selectedCourrier">
+            <option *ngFor="let courrier of courriers" [ngValue]="courrier">{{ courrier.objet }}</option>
+          </select>
+        </div>
+      </div>
     <div *ngIf="successMessageVisible" class="row align-items-center justify-content-center">
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="box">
-                <div class="icon-wrapper text-center">
-                    <i class="bi bi-bookmark-check animate"></i>
-                </div>
-                <h4 class="title text-center">Archivage réussi</h4>
-            </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="box">
+          <div class="icon-wrapper text-center">
+            <i class="bi bi-bookmark-check animate"></i>
+          </div>
+          <h4 class="title text-center">Archivage réussi</h4>
         </div>
-        <div class="col-lg-12 text-center mt-3">
-            <button type="button" class="btn btn-success" (click)="onReturnToForm()">Retour au formulaire</button>
-        </div>
+      </div>
+      <div class="col-lg-12 text-center mt-3">
+        <button type="button" class="btn btn-success" (click)="onReturnToForm()">Retour au formulaire</button>
+      </div>
     </div>
-    
+  
+    <!-- Sélection des courriers -->
+   
+  </div>
+  

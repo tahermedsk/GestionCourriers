@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
-
 import javax.persistence.*;
 
-@Entity 
+@Entity
 @Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Courrier {
@@ -30,9 +29,8 @@ public class Courrier {
     @JoinColumn(name = "dossier_id") // Nom de la colonne pour la relation avec le dossier
     private Dossier dossier;
 
-    public Courrier(){}
-    
-    
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
-
+    public Courrier() {}
 }

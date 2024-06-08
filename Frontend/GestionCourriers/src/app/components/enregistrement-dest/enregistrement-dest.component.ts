@@ -7,6 +7,7 @@ import { DirectionService } from 'src/app/services/direction.service';
 import { DossierService } from 'src/app/services/dossier.service'; // Import the DossierService
 import { ReceptionCourrierService } from 'src/app/services/reception-courrier.service';
 import { JointFileComponent } from '../joint-file/joint-file.component';
+import { Status } from 'src/app/models/courrier';
 
 @Component({
   selector: 'app-enregistrement-dest',
@@ -81,7 +82,7 @@ export class EnregistrementDestComponent implements OnInit {
     }
     this.receptionCourrier.dossier = selectedDossier;
     // Log the selected dossier's code if available
-    
+    this.receptionCourrier.status = Status.INSTANCE;
     // Call the service method to create the reception courrier
     this.receptionCourrierService.createReceptionCourrier(this.receptionCourrier)
       .subscribe(

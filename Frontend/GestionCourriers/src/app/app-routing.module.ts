@@ -8,6 +8,7 @@ import { AuthGuard } from './services/auth.guard';
 import {GestionUserComponent} from "./components/gestion-user/gestion-user.component";
 import { ListCourrierComponent } from './components/list-courrier/list-courrier.component';
 import { JointFileComponent } from './components/joint-file/joint-file.component';
+import { StatiquesComponent } from './components/statiques/statiques.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/login' , pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'dest',component:DestCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
   {path:'send',component:SendCourrierComponent , canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
   {path:"reset-password",component:ResetPasswordComponent, canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
+  {path:"statiques",component:StatiquesComponent, canActivate: [AuthGuard], data: { allowedRoles: ['ADMIN','USERBD'] }},
   {path:"gestionuser",component:GestionUserComponent ,canActivate:[AuthGuard],data:{allowedRoles: ['ADMIN']}}
 ];
 

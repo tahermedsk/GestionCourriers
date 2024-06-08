@@ -69,4 +69,10 @@ public class CourrierController {
         long count = courrierService.countCourriers();
         return ResponseEntity.ok(count);
     }
+
+    @PutMapping("/{id}/archive")
+    public ResponseEntity<Courrier> archiveCourrier(@PathVariable Long id) {
+        Courrier courrier = courrierService.updateCourrierStatus(id);
+        return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
+    }
 }
