@@ -34,6 +34,7 @@ public class CourrierController {
 
     @PostMapping
     public ResponseEntity<Courrier> saveCourrier(@RequestBody Courrier courrier) {
+
         Courrier savedCourrier = courrierService.saveCourrier(courrier);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCourrier);
     }

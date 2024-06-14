@@ -16,7 +16,7 @@
               <label for="Ampliations" class="form-label">Ampliations</label>
               <select class="form-select shadow" id="Ampliations" [(ngModel)]="transmissionCourrier.ampliations" name="ampliations" multiple>
                 <option *ngFor="let direction of amplitinos" [ngValue]="direction" (click)="toggleAmpliationSelection(direction)">
-                  {{ direction.libelle }}
+                  {{ direction.libelle }}&nbsp;&nbsp;&nbsp;{{direction.code}}
                 </option>
               </select>            
             </div>

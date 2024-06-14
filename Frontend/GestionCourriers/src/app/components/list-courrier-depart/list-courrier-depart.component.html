@@ -11,7 +11,7 @@
           <th scope="col">Date de Réception</th>
           <th scope="col">Nº Dossier</th>
           <th scope="col">Code Barre</th>
-<!--          <th scope="col">Pièces Jointes</th>-->
+    <!--          <th scope="col">Pièces Jointes</th>-->
           <th scope="col">Copie doc</th>
           <th scope="col">Objet</th>
           <th scope="col">Observation</th>
@@ -22,10 +22,10 @@
           <td>{{ courrier.id }}</td>
           <td>{{ courrier.codeBarre }}</td>
           <td>{{ courrier.destinateur?.libelle }}</td>
-          <td>{{ courrier.ampliations }}</td>
+          <td>{{ courrier.ampliations}}</td>
           <td>{{ courrier.refCourrier }}</td>
           <td>{{ courrier.dateReception | date: 'yyyy-MM-dd'}}</td>
-          <td>{{ courrier.dossier }}</td>
+          <td>{{ courrier.dossier?.code }}</td>
           <td>{{ courrier.codeBarre }}</td>
 <!--          <td>{{ courrier.piecesJointes }}</td>-->
           <td>{{ courrier.copieDoc }}</td>
