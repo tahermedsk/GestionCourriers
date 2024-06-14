@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ArchiveService } from '../../services/archive.service';
 import { CourrierService } from '../../services/courrier.service'; // Importer le service CourrierService
-import { Courrier } from '../../models/courrier'; // Importer le modèle Courrier
+import { Courrier, Status } from '../../models/courrier'; // Importer le modèle Courrier
 
 @Component({
   selector: 'app-archivage-dest',
@@ -36,7 +36,8 @@ export class ArchivageDestComponent implements OnInit {
   getCourriers(): void {
     this.courrierService.getAllCourriers().subscribe(
       (data: Courrier[]) => {
-        this.courriers = data; // Assigner les courriers récupérés au tableau local
+        // Filter the courriers to only include those with the status 'INSTANCE'
+        this.courriers = data.filter(courrier => courrier.status === Status.LIS);
       },
       error => {
         console.error('Erreur lors de la récupération des courriers:', error);
@@ -44,6 +45,7 @@ export class ArchivageDestComponent implements OnInit {
       }
     );
   }
+  
 
   onFileSelected(event: any) {
     this.formData.file = event.target.files[0];

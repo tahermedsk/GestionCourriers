@@ -50,4 +50,9 @@ export class CourrierService {
     const archiveUrl = `${this.url}/${id}/archive`;
     return this.http.put<Courrier>(archiveUrl, null); // Le corps de la requête peut être null si votre backend ne nécessite pas de corps pour cette opération
   }
+
+  lisCourrier(id: number): Observable<Courrier> {
+    const archiveUrl = `${this.url}/${id}/lis`;
+    return this.http.put<Courrier>(archiveUrl, null); // Le corps de la requête peut être null si votre backend ne nécessite pas de corps pour cette opération
+  }
 }

@@ -15,4 +15,5 @@ export class LectureVentilation {
   annotation?: string;
   direction?: Direction;
   receptionCourrier?: ReceptionCourrier;
+  status: string | undefined;
 }

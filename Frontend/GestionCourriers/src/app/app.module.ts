@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { StatiquesComponent } from './components/statiques/statiques.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -86,7 +86,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     }),
     BrowserAnimationsModule
   ],
-  providers: [    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, provideAnimationsAsync(),
+  providers: [    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, provideAnimations(),
   ],
   bootstrap: [AppComponent]
 })

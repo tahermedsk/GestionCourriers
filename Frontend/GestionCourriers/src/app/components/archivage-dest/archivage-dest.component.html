@@ -33,14 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="text-center">
-          <br>
-          <button type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">Terminé</button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="courriers.length > 0" class="row mt-5">
+      <div *ngIf="courriers.length > 0" class="row mt-5">
         <div class="col-md-12">
           <h5>Sélectionnez un courrier :</h5>
           <select class="form-control" [(ngModel)]="selectedCourrier">
@@ -48,6 +41,14 @@
           </select>
         </div>
       </div>
+      <div class="row">
+        <div class="text-center">
+          <br>
+          <button type="submit" class="btn btn-success btn-lg" (click)="onSubmit()">Terminé</button>
+        </div>
+      </div>
+    </div>
+    
     <div *ngIf="successMessageVisible" class="row align-items-center justify-content-center">
       <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
         <div class="box">

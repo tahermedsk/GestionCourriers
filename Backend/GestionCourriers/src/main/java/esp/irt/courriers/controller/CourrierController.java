@@ -73,7 +73,13 @@ public class CourrierController {
 
     @PutMapping("/{id}/archive")
     public ResponseEntity<Courrier> archiveCourrier(@PathVariable Long id) {
-        Courrier courrier = courrierService.updateCourrierStatus(id);
+        Courrier courrier = courrierService.updateCourrierStatus(id,"archivage");
+        return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}/lis")
+    public ResponseEntity<Courrier> lisCourrier(@PathVariable Long id) {
+        Courrier courrier = courrierService.updateCourrierStatus(id,"lis");
         return courrier != null ? ResponseEntity.ok(courrier) : ResponseEntity.notFound().build();
     }
 }

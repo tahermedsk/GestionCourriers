@@ -63,6 +63,14 @@
             </div>
         </div>
     </div>
+    <div *ngIf="courriers.length > 0" class="row mt-5">
+        <div class="col-md-12">
+          <h5>Sélectionnez un courrier :</h5>
+          <select class="form-control" [(ngModel)]="selectedCourrier">
+            <option *ngFor="let courrier of courriers" [ngValue]="courrier">{{ courrier.objet }}</option>
+          </select>
+        </div>
+      </div>
     <div class="row">
         <div class="col-12">
             <br>

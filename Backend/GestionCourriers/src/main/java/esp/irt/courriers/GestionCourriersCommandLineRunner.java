@@ -67,8 +67,8 @@ public void run(String... args) throws Exception {
         userRepository.save(userEntity2);
         userRepository.save(userEntity3);
     }
-    String uploadDir = environment.getProperty("cabinet.path");
-    System.out.println(uploadDir);
-    excelDataService.importDataFromExcel(uploadDir);
+    // String uploadDir = environment.getProperty("cabinet.path");
+    // System.out.println(uploadDir);
+    // excelDataService.importDataFromExcel(uploadDir);
 }}
 

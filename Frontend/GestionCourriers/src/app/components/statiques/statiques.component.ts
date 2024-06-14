@@ -31,7 +31,7 @@ export class StatiquesComponent implements OnInit {
   }
 
   filterCourriers(status: Status): void {
-    this.selectedTab = status === Status.ARCHIVE ? 'archive' : 'instance';
+    this.selectedTab = status.toLowerCase(); // Use lowercase tab names for simplicity
     this.filteredCourriers = this.courriers.filter(courrier => courrier.status === status);
   }
 

@@ -52,12 +52,16 @@ public class CourrierService {
         return courrierRepository.count();
     }
 
-    public Courrier updateCourrierStatus(Long id) {
+    public Courrier updateCourrierStatus(Long id , String type) {
         Courrier courrier = courrierRepository.findById(id).orElse(null);
-        if (courrier != null) {
+        if (courrier != null ) {
+            if(type=="archivage"){
             courrier.setStatus(Status.ARCHIVE); // Mettre à jour le statut du courrier
             return courrierRepository.save(courrier);
-        }
+        }if(type == "lis"){
+            courrier.setStatus(Status.LIS); // Mettre à jour le statut du courrier
+            return courrierRepository.save(courrier);
+        }}
         return null; // Gérer le cas où le courrier n'est pas trouvé
     }
 }

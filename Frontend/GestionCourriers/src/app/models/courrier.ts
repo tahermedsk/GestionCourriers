@@ -4,7 +4,8 @@ import {Time} from "@angular/common";
 
 export enum Status {
   ARCHIVE = 'ARCHIVE',
-  INSTANCE = 'INSTANCE'
+  INSTANCE = 'INSTANCE',
+  LIS = 'LIS'
 }
 
 

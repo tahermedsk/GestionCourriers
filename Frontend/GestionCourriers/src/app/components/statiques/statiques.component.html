@@ -18,6 +18,15 @@
     >
       Courriers Instances
     </a>
+    <!-- New tab for the Lis -->
+    <a
+      class="list-group-item list-group-item-action"
+      [class.active]="selectedTab === 'new_status'"
+      (click)="filterCourriers(Status.LIS)"
+      [ngStyle]="selectedTab === 'lis' ? { 'background-color': 'green', color: 'white' } : null"
+    >
+      Courriers Lis
+    </a>
     <a
       class="list-group-item list-group-item-action"
       [class.active]="selectedTab === 'tous'"
@@ -66,6 +75,42 @@
         </table>
       </div>
       <div *ngIf="selectedTab === 'instance'" class="tab-pane fade show active">
+        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Code Barre</th>
+              <th scope="col">Objet</th>
+              <th scope="col">Date Enregistrement</th>
+              <th scope="col">Référence Courrier</th>
+              <th scope="col">Observation</th>
+              <th scope="col">Mode Transmission</th>
+              <th scope="col">Date Réception</th>
+              <th scope="col">Dossier</th>
+              <th scope="col">Pièces Jointes</th>
+              <th scope="col">Copie Document</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let courrier of filteredCourriers">
+              <td>{{ courrier.codeBarre }}</td>
+              <td>{{ courrier.objet }}</td>
+              <td>{{ courrier.dateEnregistrement | date }}</td>
+              <td>{{ courrier.refCourrier }}</td>
+              <td>{{ courrier.observation }}</td>
+              <td>{{ courrier.modeTransmission }}</td>
+              <td>{{ courrier.dateReception | date }}</td>
+              <td>{{ courrier.dossier?.code }}</td>
+              <td>{{ courrier.piecesJointes?.name }}</td>
+              <td>{{ courrier.copieDoc?.name }}</td>
+              <td>{{ courrier.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- New content for the Lis tab -->
+      <div *ngIf="selectedTab === 'lis'" class="tab-pane fade show active">
         <br />
         <table class="table table-striped">
           <thead>
