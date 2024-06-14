@@ -36,6 +36,7 @@ export class EnregistrementDestComponent implements OnInit {
     // Fetch direction data
     this.directionService.getAllDirections().subscribe(
       (data) => {
+        
         this.directions = data;
       },
       (error) => {
@@ -43,21 +44,14 @@ export class EnregistrementDestComponent implements OnInit {
       }
     );
 
-    // Fetch dossier data
-    this.dossierService.getAllDossiers().subscribe(
-      (data) => {
-        this.dossiers = data;
-        console.log(this.dossiers);
-      },
-      (error) => {
-        console.error('Error fetching dossier:', error);
-      }
-    );
+
   }
 
   onInputChange() {
     this.directions?.forEach(element => {
       if (element.code == this.code) {
+        
+
         this.libelle = element.libelle;
       }
     });

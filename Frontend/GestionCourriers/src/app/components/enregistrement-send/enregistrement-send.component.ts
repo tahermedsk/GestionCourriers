@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import { Direction } from "src/app/models/direction";
 import { Dossier } from "src/app/models/dossier";
 import { TransmissionCourrier } from "src/app/models/transmission-courrier";
@@ -13,7 +13,7 @@ import { Status } from "src/app/models/courrier";
   templateUrl: "./enregistrement-send.component.html",
   styleUrls: ["./enregistrement-send.component.css"],
 })
-export class EnregistrementSendComponent {
+export class EnregistrementSendComponent implements OnInit{
   transmissionCourrier: TransmissionCourrier = new TransmissionCourrier();
   submitted = false;
   code?: number;
@@ -56,10 +56,13 @@ export class EnregistrementSendComponent {
     this.transmissionCourrier.ampliations = this.selectedAmpliations;
     console.log(this.selectedAmpliations);
     this.transmissionCourrier.status = Status.INSTANCE;
+    this.transmissionCourrier.ampliations=this.selectedAmpliations;
+    console.log("le variable complet",this.transmissionCourrier);
     this.transmissionCourrierService
       .createTransmissionCourrier(this.transmissionCourrier)
       .subscribe(
         (response) => {
+          console.log("reponse:");
           console.log(response);
           this.submitted = true;
         },
@@ -71,7 +74,10 @@ export class EnregistrementSendComponent {
   }
 
   ngOnInit(): void {
-    this.amplitinos = [{code:123,libelle:"Fax"},{code:24,libelle:"Mail"},{code:3,libelle:"other"}]
+    this.directionService.getAllDirections().subscribe((res)=>{
+      this.amplitinos =res;
+      console.log("Amplitions",this.amplitinos);
+    });
     console.log(this.jointFileComponent1)
     console.log(this.jointFileComponent2)
     this.directionService.getAllDirections().subscribe(
@@ -86,7 +92,7 @@ export class EnregistrementSendComponent {
     this.dossierService.getAllDossiers().subscribe(
       (data) => {
         this.dossiers = data;
-        console.log(this.dossiers);
+        console.log("dossieeeeeeer",this.dossiers);
       },
       (error) => {
         console.error('Error fetching dossier:', error);

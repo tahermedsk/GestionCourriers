@@ -10,6 +10,7 @@
               class="form-control shadow"
               id="code"
               placeholder="Code du document"
+              [(ngModel)]="code"
               [(ngModel)]="receptionCourrier.codeBarre"
               (input)="onInputChange()"
             />

@@ -3,7 +3,8 @@
         <div class="row g-3">
           <div class="col-md-3">
             <label for="code" class="form-label">Code / الرمز</label>
-            <input type="text" class="form-control shadow" id="code" placeholder="Code du document" [(ngModel)]="transmissionCourrier.codeBarre" (input)="onInputChange()" name="codeBarre">
+            <input type="text" class="form-control shadow" id="code" placeholder="Code du document"               [(ngModel)]="code"
+            [(ngModel)]="transmissionCourrier.codeBarre" (input)="onInputChange()" name="codeBarre">
           </div>
           <div class="col-md-3">
             <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
@@ -16,7 +17,7 @@
               <label for="Ampliations" class="form-label">Ampliations</label>
               <select class="form-select shadow" id="Ampliations" [(ngModel)]="transmissionCourrier.ampliations" name="ampliations" multiple>
                 <option *ngFor="let direction of amplitinos" [ngValue]="direction" (click)="toggleAmpliationSelection(direction)">
-                  {{ direction.libelle }}
+                  {{ direction.libelle }}&nbsp;&nbsp;&nbsp;{{direction.code}}
                 </option>
               </select>            
             </div>
