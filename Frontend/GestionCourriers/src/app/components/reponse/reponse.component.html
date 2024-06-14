@@ -1,0 +1,28 @@
+<div>
+  <h2>Ajouter une Réponse</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="date" class="form-label">Date:</label>
+      <input id="date" class="form-control" type="date" [(ngModel)]="reponse.date" name="date" required>
+    </div>
+    <div>
+      <label for="idReponse" class="form-label">ID Réponse:</label>
+      <input id="idReponse" class="form-control" type="text" [(ngModel)]="reponse.idReponse" name="idReponse" required>
+    </div>
+    <div>
+      <label for="idCourrier" class="form-label">ID Courrier:</label>
+      <input id="idCourrier" class="form-control" type="text" [(ngModel)]="reponse.idCourrier" name="idCourrier" required>
+    </div>
+    <div>
+      <label for="observations" class="form-label">Observations:</label>
+      <input id="observations" class="form-control" type="text" [(ngModel)]="reponse.observations" name="observations" required>
+    </div>
+    <div>
+      <label for="file" class="form-label">Fichier:</label>
+      <input id="file" class="form-control" type="file" (change)="onFileSelected($event)">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-outline-info align-middle">  Enregistrer</button>
+  </form>
+  <div *ngIf="uploadMessage">{{ uploadMessage }}</div>
+</div>

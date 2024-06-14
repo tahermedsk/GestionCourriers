@@ -14,6 +14,8 @@ import { EnregistrementDestComponent } from './components/enregistrement-dest/en
 import { OptionsComponent } from './components/options/options.component';
 import { VentilationDestComponent } from './components/ventilation-dest/ventilation-dest.component';
 import { ReponseDestComponent } from './components/reponse-dest/reponse-dest.component';
+import { ReponseComponent } from './components/reponse/reponse.component';
+import { ReponseFinalComponent } from './components/reponse-final/reponse-final.component';
 import { ArchivageDestComponent } from './components/archivage-dest/archivage-dest.component';
 import { EnregistrementSendComponent } from './components/enregistrement-send/enregistrement-send.component';
 import { GestionUserComponent } from './components/gestion-user/gestion-user.component';
@@ -35,7 +37,8 @@ import { JointFileComponent } from './components/joint-file/joint-file.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {JwtInterceptor} from './helpers/jwt.interceptor';
-import { StatiquesComponent } from './components/statiques/statiques.component'
+import { StatiquesComponent } from './components/statiques/statiques.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { StatiquesComponent } from './components/statiques/statiques.component'
     OptionsComponent,
     VentilationDestComponent,
     ReponseDestComponent,
+    ReponseComponent,
+    ReponseFinalComponent,
     ArchivageDestComponent,
     EnregistrementSendComponent,
     GestionUserComponent,
@@ -81,7 +86,7 @@ import { StatiquesComponent } from './components/statiques/statiques.component'
     }),
     BrowserAnimationsModule
   ],
-  providers: [    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+  providers: [    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

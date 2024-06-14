@@ -49,3 +49,4 @@ export class ArchiveService {
     return this.http.post<any>(this.apiUrl+'/upload', formData, { headers: this.getHeaders() });
   }
 }
+ 
