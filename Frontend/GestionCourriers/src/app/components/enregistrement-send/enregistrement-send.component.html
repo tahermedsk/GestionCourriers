@@ -3,7 +3,8 @@
         <div class="row g-3">
           <div class="col-md-3">
             <label for="code" class="form-label">Code / الرمز</label>
-            <input type="text" class="form-control shadow" id="code" placeholder="Code du document" [(ngModel)]="transmissionCourrier.codeBarre" (input)="onInputChange()" name="codeBarre">
+            <input type="text" class="form-control shadow" id="code" placeholder="Code du document"               [(ngModel)]="code"
+            [(ngModel)]="transmissionCourrier.codeBarre" (input)="onInputChange()" name="codeBarre">
           </div>
           <div class="col-md-3">
             <label for="expediteur" class="form-label">Expéditeur / المرسل</label>
